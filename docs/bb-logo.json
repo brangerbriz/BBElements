@@ -1,0 +1,1 @@
+{"name":"bb-logo","description":"renders an svg version of our logo","element":"<bb-logo></bb-logo> ","attributes":{"markonly":{"type":"Boolean","value":"false","info":"only displays the (B) mark"},"width":{"type":"Number","value":"200","info":"changes the width (&& height proportionally) of svg"}}}

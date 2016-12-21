@@ -1,0 +1,36 @@
+{
+  "name": "bb-elements",
+  "version": "1.0.0",
+  "description": "Branger_Briz custom HTML elements",
+  "main": "example.html",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "jshint --reporter=node_modules/jshint-stylish src/* ; exit 0",
+    "docs": "cd docs ; node make.js",
+    "prebuild": "npm run lint ; node src/utils/PreBuild.js",
+    "build": "node src/utils/ListElements.js ; browserify src/BBElements.js | babel > build/js/BBElements.js",
+    "postbuild": "npm run docs",
+    "watch": "nodemon -w src/*.js -x 'npm run build'"
+  },
+  "author": "Nick Briz",
+  "license": "GPL-3.0",
+  "devDependencies": {
+    "babel-cli": "^6.18.0",
+    "babel-preset-env": "^1.1.4",
+    "browserify": "^13.0.1",
+    "cheerio": "^0.22.0",
+    "jshint": "^2.9.2",
+    "jshint-stylish": "^2.2.0",
+    "ncp": "^2.0.0",
+    "nodemon": "^1.9.2",
+    "rimraf": "^2.5.4"
+  },
+  "babel": {
+    "presets": [
+      "env"
+    ]
+  }
+}

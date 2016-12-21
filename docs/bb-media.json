@@ -1,0 +1,1 @@
+{"name":"bb-media","description":"general media container/wrapper for a single media element ( ex: img, video, audio, iframe )","element":"<bb-media></bb-media> ","attributes":{"fullwidth":{"type":"Boolean","value":"false","info":"makes this a full width media element"},"caption":{"type":"Boolean","value":"false","info":"optional caption which appears below the media element"}}}

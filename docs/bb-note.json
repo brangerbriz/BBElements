@@ -1,0 +1,1 @@
+{"name":"bb-note","description":"marginal notes element, must be used inside a <bb-p> element ( at the moment a single <bb-p> element can only have up to 4 notes, if you need to use more notes create an additional <bb-p> element )","element":"<bb-note></bb-note> ","attributes":{}}

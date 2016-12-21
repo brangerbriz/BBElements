@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+
+		<meta charset="utf-8">
+		<meta http-equiv="x-ua-compatible" content="ie=edge">
+
+		<title> Branger_Briz </title>
+
+		<!-- BB Meta Template -->
+
+		<link rel="icon" type="image/png" href="bb.svg" />
+		<meta name="description" content="we are a full­service digital agency+lab made up of artists, strategists, educators && programmers bent on articulating contemporary culture. we produce award winning work for brands, educators, and cultural institutions around the world.">
+		<!-- for Google+ -->
+		<meta itemprop="name" content="Branger_Briz">
+		<meta itemprop="description" content="we are a full­service digital agency+lab made up of artists, strategists, educators && programmers bent on articulating contemporary culture">
+		<meta itemprop="image" content="bb.svg">
+		<!-- for Twitter -->
+		<meta name="twitter:card" content="summary_large_image">
+		<meta name="twitter:site" content="@branger_briz">
+		<meta name="twitter:title" content="Branger_Briz">
+		<meta name="twitter:description" content="we are a full­service digital agency+lab made up of artists, strategists, educators && programmers bent on articulating contemporary culture.">
+		<meta name="twitter:creator" content="@branger_briz">
+		<!-- Twitter summary card with large image must be at least 280x150px -->
+		<meta name="twitter:image:src" content="bb.svg">
+		<!-- for Facebook -->
+		<meta property="og:title" content="Branger_Briz" />
+		<meta property="og:type" content="article" />
+		<meta property="og:url" content="http://brangerbriz.com/" />
+		<meta property="og:image" content="bb.svg" />
+		<meta property="og:description" content="we are a full­service digital agency+lab made up of artists, strategists, educators && programmers bent on articulating contemporary culture." />
+		<meta property="og:site_name" content="Branger_Briz" />
+
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+
+		<style>
+
+			html,body{ padding:0; margin:0; }
+
+			bb-row[noborder]{
+				margin-bottom: 45px;
+			}
+
+			@media (max-width: 1280px) { 
+				bb-cell:nth-child(2) {
+					margin-left: -25%;
+				}
+			}
+
+		</style>
+
+
+		<script src="js/BBElements.js"></script>
+		<script>
+
+			// LOAD THE CUSTOM ELEMENTS!
+			BBElements.lazyLoad();
+
+			// alternative loading options include:
+			/*
+			
+			BBElements.lazyLoad([
+				'bb-logo',
+				'bb-h1',
+				'etc...'
+			]);
+			
+			// ... or ...
+			
+			BBElements.import('path/to/vulcanized-file.html');
+			*/
+			
+			// OPTIONAL ( RECOMMENDED ) 
+			BBElements.usePlaceholderCSS();
+			
+		</script>
+
+	</head>
+	<body>
+
+		<script>
+			// OPTIONAL ( alternative to .usePlaceHolderCSS() )
+			// BBElements.useLoadingScreen();
+		</script>
+
+		<bb-container>
+		
+			<bb-logo></bb-logo>
+
+			<bb-h1> Highest-level Title Element </bb-h1>
+			
+			<bb-h2> Subhead Level 1 </bb-h2>
+
+			<bb-row>
+				<bb-cell>Client</bb-cell>
+				<bb-cell scale='2'>eMerge Conference Miami</bb-cell>
+			</bb-row>
+
+			<bb-row>
+				<bb-cell>Partners</bb-cell>
+				<bb-cell scale='2'>Name of Partnering Agency</bb-cell>
+			</bb-row>
+
+			<bb-row>
+				<bb-cell>Date</bb-cell>
+				<bb-cell scale='2'>June 2016</bb-cell>
+			</bb-row>
+
+			<bb-row noborder>
+				<bb-cell>Awards</bb-cell>
+				<bb-cell scale='2'>Award Name, A Different Award, More Awards, Very Award-Winning Project</bb-cell>
+			</bb-row>
+
+			<bb-p>
+				Lorem ipsum dolor sit amet, <a href="#">consectetur</a> adipisicing elit. Ab, veniam voluptatibus impedit! Iusto veritatis dolores aut. Quidem minus tenetur, ipsa, architecto odit nesciunt. Tempora necessitatibus, incidunt, similique maxime ducimus sint. Lorem <code> new BB.Color()</code> sit amet, consectetur adipisicing elit. Ab, veniam voluptatibus impedit! Iusto veritatis dolores aut. Quidem minus tenetur, ipsa, architecto odit nesciunt. Tempora necessitatibus, incidunt, similique maxime ducimus sint.
+			</bb-p>
+
+			<bb-h3>Subhead Level 2</bb-h3>
+
+			<bb-media fullwidth caption>
+				<img src="sample.png" alt="a charge for privacy">
+			</bb-media>
+
+			<bb-p>
+				<img src="sample.png" alt="a charge for privacy">
+				Lorem ipsum dolor sit amet, <a href="#">consectetur</a> adipisicing elit. Ab, veniam voluptatibus impedit! Iusto veritatis dolores aut. Quidem minus tenetur, ipsa, architecto odit nesciunt. Tempora necessitatibus, incidunt, similique maxime ducimus sint. Lorem <code> new BB.Color()</code> sit amet, consectetur adipisicing elit. Ab, veniam voluptatibus impedit! Iusto veritatis dolores aut. Quidem minus tenetur, ipsa, architecto odit nesciunt. Tempora necessitatibus, incidunt, similique maxime ducimus sint.
+				<br><br>
+				Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sequi, impedit ducimus blanditiis. Rerum, dolores, autem. Optio consectetur excepturi facilis dignissimos itaque molestias eius aperiam, quisquam provident voluptatem enim, minima vel.
+			</bb-p>
+
+			<bb-media>
+				<img src="sample.png" alt="a charge for privacy">
+			</bb-media>
+
+			<bb-p>
+				Lorem ipsum dolor sit amet, <a href="#">consectetur</a> adipisicing elit. Ab, veniam voluptatibus impedit! Iusto veritatis dolores aut. Quidem minus tenetur, ipsa, architecto odit nesciunt. Tempora necessitatibus, incidunt, similique maxime ducimus sint. Lorem <code> new BB.Color()</code> sit amet, consectetur adipisicing elit. Ab, veniam voluptatibus <bb-note info="this is an important marginal note"></bb-note> impedit! Iusto veritatis dolores aut. Quidem minus tenetur, ipsa, architecto odit nesciunt. Tempora necessitatibus, incidunt, similique maxime ducimus sint.
+			</bb-p>
+
+			<bb-p>
+				<bb-quote>
+					Cras euismod libero dolor, at egestas ante hendrerit ac
+				</bb-quote>
+				Lorem ipsum dolor sit amet, <a href="#">consectetur</a> adipisicing elit. Ab, veniam voluptatibus impedit! Iusto veritatis dolores aut. Quidem minus tenetur, ipsa, architecto odit nesciunt. Tempora necessitatibus, incidunt, similique maxime ducimus sint. Lorem <code> new BB.Color()</code> sit amet, consectetur adipisicing elit. Ab, veniam voluptatibus impedit! Iusto veritatis dolores aut. Quidem minus tenetur, ipsa, architecto odit nesciunt. Tempora necessitatibus, incidunt, similique maxime ducimus sint. sit amet, consectetur adipisicing elit. Ab, veniam voluptatibus impedit! Iusto veritatis dolores aut. Quidem minus tenetur, ipsa, architecto odit nesciunt. Tempora necessitatibus, incidunt, similique maxime ducimus sint.
+			</bb-p>
+
+			<bb-p>
+				Lorem ipsum dolor sit amet, <a href="#">consectetur</a> adipisicing elit. Ab, veniam voluptatibus impedit! Iusto veritatis dolores aut. Quidem minus tenetur, ipsa, architecto odit nesciunt. Tempora necessitatibus, incidunt, similique maxime ducimus sint. Lorem <code> new BB.Color()</code> sit amet, consectetur adipisicing elit. Ab, veniam voluptatibus impedit! Iusto veritatis dolores aut. Quidem minus tenetur, ipsa, architecto odit nesciunt. Tempora necessitatibus, incidunt, similique maxime ducimus sint.
+			</bb-p>
+				
+			<bb-quote credit="somebody worth quoting">
+				Cras euismod libero dolor, at egestas ante hendrerit ac
+			</bb-quote>
+
+			<bb-p>
+				Lorem ipsum dolor sit amet, <a href="#">consectetur</a> adipisicing elit. Ab, veniam voluptatibus impedit! Iusto veritatis dolores aut. Quidem minus tenetur, ipsa, architecto odit nesciunt. Tempora necessitatibus, incidunt, similique maxime ducimus sint. Lorem sit amet <bb-note info="this is a note about a thing that has to do with what is written in the paragraph"></bb-note>, consectetur adipisicing elit. Ab, veniam voluptatibus impedit! Iusto veritatis dolores aut. Quidem minus tenetur, ipsa, architecto odit nesciunt. Tempora necessitatibus, incidunt, similique maxime ducimus sint.
+			</bb-p>
+
+			<bb-tags>
+				<a href="#">Featured</a>
+				<a href="#">Generative</a>
+				<a href="#">Installation</a>
+				<a href="#">Digital Literacy</a>
+				<a href="#">Information Security</a>
+				<a href="#">Public-Health</a>
+				<a href="#">Open-Source</a>
+				<a href="#">Digital Community</a>
+			</bb-tags>
+
+			<bb-footer back-text="Back to all Projects" back-url="#"></bb-footer>
+		
+		</bb-container>
+
+		<script>
+			(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+			(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+			m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+			})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+			ga('create', 'UA-6098550-23', 'auto');
+			ga('send', 'pageview');
+		</script>
+
+
+	</body>
+</html>

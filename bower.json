@@ -1,0 +1,14 @@
+{
+  "name": "bb-elements",
+  "description": "Branger_Briz custom HTML elements",
+  "main": "example.html",
+  "authors": [
+    "Nick Briz"
+  ],
+  "license": "GPL-3.0",
+  "homepage": "",
+  "private": true,
+  "dependencies": {
+    "polymer": "^1.7.0"
+  }
+}
