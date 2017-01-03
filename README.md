@@ -2,15 +2,15 @@
 
 is a front-end JavaScript library for using custom HTML elements that conform to the Branger_Briz brand. The library uses the [webcomponents polyfill](https://github.com/webcomponents/webcomponentsjs) as well as the [Polymer library](https://www.polymer-project.org/1.0/) for creating the actual custom elements. The BBElements library itself handles the following:
 
-	- conditionally loads polyfill
-	- lazy loads polymer
-	- lazy loads BB fonts CSS
-	- lazy loads elements ( all or from a custom list )
-	- alternativly, can load a [vulcanized](https://github.com/Polymer/vulcanize) elements html file
-	- provides optional loading helpers:
-		- display unresolved CSS on elements before they've finished loading ( removed after fully loaded )
-		- display loading screen with a progress bar
-	- handles some DOM manipulation related to marginal notes ( `<bb-note>` )
+- conditionally loads polyfill
+- lazy loads polymer
+- lazy loads BB fonts CSS
+- lazy loads elements ( all or from a custom list )
+- alternativly, can load a [vulcanized](https://github.com/Polymer/vulcanize) elements html file
+- provides optional loading helpers:
+	- display unresolved CSS on elements before they've finished loading ( removed after fully loaded )
+	- display loading screen with a progress bar
+- handles some DOM manipulation related to marginal notes ( `<bb-note>` )
 
 
 ## usage
