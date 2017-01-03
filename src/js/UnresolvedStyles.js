@@ -120,6 +120,12 @@ module.exports =
 			'bb-media[fullwidth] img {'+
 				"max-width: none;"+
 			'}'+
+			"bb-note{"+
+				"font-family: sans-serif;"+
+				"color:#e40477;"+
+				"vertical-align: super;"+
+				"font-size: 75%;"+
+			"}"+
 			"bb-tags {"+
 				"display: block;"+
 				"font-family: 'Graphik-Medium';"+
