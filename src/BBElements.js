@@ -121,8 +121,10 @@ class BBElementsClass {
 		var s2 = document.createElement('span');
 		s1.style.color = "#e40477";
 		s1.textContent = num+'. ';
-		s2.style.color = "#c4c4c4";
-		s2.textContent = info;
+		// s2.style.color = "#c4c4c4";
+		s2.style.color = "#A7A8A7";
+		s2.innerHTML = info; // maybe parse string for <a> && createElement('a')
+							 // rather than .innerHTML, which is 'technically' unfavorable
 		aside.appendChild( s1 );
 		aside.appendChild( s2 );
 		return aside;
