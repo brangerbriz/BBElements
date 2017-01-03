@@ -6,12 +6,20 @@ var ele=ELE.tagName.toLowerCase();if(this.allBBElements.indexOf(ele)>=0&&this.re
 var progress=BBElements.ready.length/(BBElements.list.length-1);this.progressBar.style.width=(this.loadingBar.offsetWidth-2)*progress+"px";}if(this.usingUnresolvedStyles)this.removeUnresolvedRule(ele);}else if(this.allBBElements.indexOf(ele)<0){throw new Error('BBElements: '+ele+' is not an official BB Element');}if(this.ready.length==this.list.length-1&&this.progressBar){// 					 ^ -1 for polymer lib
 this.hideLoader();}}hideLoader(){this.fadeOutLoader();}lazyLoadList(){// console.log('BBElements: loaded 0 of '+(this.list.length-1));
 // load polymer && all the bb-elements listed
-this.list.forEach(function(elementURL){var elImport=document.createElement('link');elImport.rel='import';elImport.href=elementURL;document.head.appendChild(elImport);});}numberNotes(){var notes=document.querySelectorAll('bb-note');for(var i=0;i<notes.length;i++){notes[i].textContent=i+1;}}makeNote(num,info){var aside=document.createElement('aside');aside.style.float="right";aside.style.fontSize="12px";aside.style.width="250px";aside.style.marginRight="-"+(250+32)+"px";var s1=document.createElement('span');var s2=document.createElement('span');s1.style.color="#e40477";s1.textContent=num+'. ';// s2.style.color = "#c4c4c4";
+this.list.forEach(function(elementURL){var elImport=document.createElement('link');elImport.rel='import';elImport.href=elementURL;document.head.appendChild(elImport);});}numberNotes(){var notes=document.querySelectorAll('bb-note');for(var i=0;i<notes.length;i++){notes[i].textContent=i+1;}}makeNote(num,info){var s1=document.createElement('span');var s2=document.createElement('span');s1.style.color="#e40477";s1.textContent=num+'. ';// s2.style.color = "#c4c4c4";
 s2.style.color="#A7A8A7";s2.innerHTML=info;// maybe parse string for <a> && createElement('a')
 // rather than .innerHTML, which is 'technically' unfavorable
-aside.appendChild(s1);aside.appendChild(s2);return aside;}makeMarginalNotes(){var notes=document.querySelectorAll('bb-note');// for (var i = 0; i < notes.length; i++) {
-for(var i=notes.length-1;i>=0;i--){var n=this.makeNote(notes[i].textContent,notes[i].getAttribute('info'));notes[i].parentNode.insertBefore(n,notes[i].parentNode.childNodes[0]);// notes[i].parentNode.appendChild( n ); // << would need to go in the bottom for mobile????
-}}fadeOutLoader(){var self=this;function func(){// interval / duration 
+var div=document.createElement('div');div.appendChild(s1);div.appendChild(s2);return div;}makeMarginalNotes(){var notes=document.querySelectorAll('bb-note');// organize notes by parent elements
+var dict={};for(var i=0;i<notes.length;i++){var pid;// parent id
+var parent=notes[i].parentNode;if(parent.getAttribute('data-pid')===null){pid=i;// create pid ...
+parent.setAttribute('data-pid',pid);// ...&& add prop to dict
+dict[pid]=[];}else{// get pid
+pid=parent.getAttribute('data-pid');}// add this child to proper parent prop
+dict[pid].push({ele:notes[i],num:notes[i].textContent,info:notes[i].getAttribute('info')});}// create an "aside" per parent element && insert coresponding notes
+for(var p in dict){// create aside 
+var aside=document.createElement('aside');aside.style.float="right";aside.style.fontSize="12px";aside.style.width="250px";aside.style.marginRight="-"+(250+32)+"px";// append individual notes 
+for(var j=0;j<dict[p].length;j++){var n=this.makeNote(dict[p][j].num,dict[p][j].info);aside.appendChild(n);}// insert aside into parent
+var pNode=dict[p][0].ele.parentNode;pNode.insertBefore(aside,pNode.childNodes[0]);}}fadeOutLoader(){var self=this;function func(){// interval / duration 
 var dec=100/500;var opac=parseFloat(self.loadingScreen.style.opacity)-dec;self.loadingScreen.style.opacity=opac;if(opac<=0){window.clearInterval(fading);self.loadingScreen.remove();}}var fading=window.setInterval(func,100);}// ~ ~ ~ ~ ~ ~ ~ ~ ~ ~  ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ public methods
 import(vulcanizedFile){var self=this;var progress=0;var total=3;function updateProgBar(){if(self.progressBar){progress++;self.progressBar.style.width=(self.loadingBar.offsetWidth-2)*progress/total+"px";if(progress==total)self.hideLoader();}}function loadPolymerAndVFile(){// load polymer
 var linkP=document.createElement('link');linkP.rel='import';linkP.href=self.list[0];linkP.onload=function(){updateProgBar();};document.head.appendChild(linkP);// load vulcanized file

@@ -196,93 +196,54 @@
 				logo.style.marginLeft = l+"px";				
 			},
 
-			// repositionMarginalNote: function( note, spot ){
-			// 	var temp = note;
-			// 	var parent = note.parentNode;
-			// 	note.parentNode.removeChild( note );
-			// 	if( spot == "bottom"){										
-			// 		parent.appendChild( temp );
-			// 	} else {
-			// 		parent.insertBefore( temp, parent.childNodes[0] );	
-			// 		// space out notes in same paragraph
-			// 		// re:issue: https://github.com/brangerbriz/BBElements/issues/4
-			// 		if( temp.nextElementSibling!==null && temp.nextElementSibling.nodeName=="ASIDE"){
-			// 			console.log( temp.children[0] )
-			// 			temp.nextElementSibling.style.marginTop = temp.offsetHeight + "px";
-			// 		}	
-			// 	}
-				
-			// },
-
-			reorderMarginalNotes: function( notes ){
-				var nz = [];				
-
-				function tempNz( i ){
-					var tempObj = {
-						note: notes[i],
-						dad: notes[i].parentNode
-					}
-					nz.push( tempObj );
-					notes[i].parentNode.removeChild( notes[i] );
-				}
-
-				if( innerWidth < 767 ){
-					for (var i = notes.length-1; i >=0; i--) tempNz( i );
+			repositionMarginalNote: function( note, spot ){
+				var temp = note;
+				var parent = note.parentNode;
+				note.parentNode.removeChild( note );
+				if( spot == "bottom"){										
+					parent.appendChild( temp );
 				} else {
-					for (var i = 0; i < notes.length; i++) tempNz( i );
-				}
-
-				// for (var i = 0; i < nz.length; i++) {
-				for (var i = nz.length-1; i >=0; i--) {					
-					if( innerWidth < 767 ){ // bottom
-						
-						nz[i].dad.appendChild( nz[i].note );
-					
-					} else { // side
-					
-						nz[i].dad.insertBefore( nz[i].note, nz[i].dad.childNodes[0] );	
-						// space out notes in same paragraph
-						// re:issue: https://github.com/brangerbriz/BBElements/issues/4
-						if( nz[i].note.nextElementSibling!==null && nz[i].note.nextElementSibling.nodeName=="ASIDE"){
-							nz[i].note.nextElementSibling.style.marginTop = nz[i].note.offsetHeight + "px";
-						}	
-
-					}
+					parent.insertBefore( temp, parent.childNodes[0] );	
 				}
 				
 			},
 
 			resizeMarginalNotes: function( note ){
-				var w, mr, f, mt;
+				var w, mr, f, mt, p;
 				if( innerWidth < 767 ){
 					w = 90+"%";
 					mr = "0px";
 					mt = "10px";
 					f = "none";
-					// this.repositionMarginalNote( note, "bottom" );
+					p = "0px";
+					this.repositionMarginalNote( note, "bottom" );
 				} else if( innerWidth < 1023 ){
 					f = "right";
 					w = 174+'px';
 					mr = -99+"px";
 					mt = "0px";
-					// this.repositionMarginalNote( note, "top" );					
+					p = "0 0 20px 20px";
+					this.repositionMarginalNote( note, "top" );					
 				} else if( innerWidth < 1280 ){
 					f = "right";
 					w = 222+'px';
 					mr = -236+'px';
 					mt = "0px";
-					// this.repositionMarginalNote( note, "top" );
+					p = "0 0 20px 20px";
+					this.repositionMarginalNote( note, "top" );
 				} else {
 					f = "right";
 					w = 250+'px';
 					mr = -282+"px";
 					mt = "0px";
-					// this.repositionMarginalNote( note, "top" );
+					p = "0 0 20px 20px";
+					this.repositionMarginalNote( note, "top" );
 				}	
 				note.style.width = w;
 				note.style.marginRight = mr;
 				note.style.marginTop = mt;
 				note.style.float = f;
+				note.style.padding = p;
 			},
 
 			resizeMedias: function( media ){
@@ -308,13 +269,10 @@
 					this.positionLogo();
 				}
 
+				// resize marginal notes				
 				var notes = document.querySelectorAll('bb-p > aside'); 
-				// resize morginal notes				
 				for (var i = 0; i < notes.length; i++) {
 					this.resizeMarginalNotes( notes[i] );
-				}
-				if( notes.length > 0 ){// reposition marginal notes
-					this.reorderMarginalNotes( notes );
 				}
 
 				// resize media elements

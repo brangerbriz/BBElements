@@ -115,12 +115,7 @@ class BBElementsClass {
 		}
 	}
 
-	makeNote( num, info ) {
-		var aside = document.createElement('aside');
-		aside.style.float = "right";
-		aside.style.fontSize = "12px";
-		aside.style.width = "250px";
-		aside.style.marginRight = "-"+(250+32)+"px";
+	makeNote( num, info ) {	
 		var s1 = document.createElement('span');
 		var s2 = document.createElement('span');
 		s1.style.color = "#e40477";
@@ -129,19 +124,59 @@ class BBElementsClass {
 		s2.style.color = "#A7A8A7";
 		s2.innerHTML = info; // maybe parse string for <a> && createElement('a')
 							 // rather than .innerHTML, which is 'technically' unfavorable
-		aside.appendChild( s1 );
-		aside.appendChild( s2 );
-		return aside;
+		var div = document.createElement('div');
+		div.appendChild( s1 );
+		div.appendChild( s2 );
+		return div;
 	}
 
 	makeMarginalNotes(){
 		var notes = document.querySelectorAll('bb-note');
-		// for (var i = 0; i < notes.length; i++) {
-		for (var i = notes.length-1; i >= 0; i--) {
-			var n = this.makeNote( notes[i].textContent, notes[i].getAttribute('info') );
-			notes[i].parentNode.insertBefore( n, notes[i].parentNode.childNodes[0] );
-			// notes[i].parentNode.appendChild( n ); // << would need to go in the bottom for mobile????
+		
+		// organize notes by parent elements
+		var dict = {};
+		for (var i = 0; i < notes.length; i++) {
+			var pid; // parent id
+			var parent = notes[i].parentNode;
+			
+			if( parent.getAttribute('data-pid')===null ){
+				pid = i;
+				// create pid ...
+				parent.setAttribute('data-pid',pid);
+				// ...&& add prop to dict
+				dict[pid] = [];				
+			} else {
+				// get pid
+				pid = parent.getAttribute('data-pid');
+			}
+
+			// add this child to proper parent prop
+			dict[pid].push({
+				ele: notes[i],
+				num: notes[i].textContent,
+				info: notes[i].getAttribute('info')
+			});
 		}
+
+		// create an "aside" per parent element && insert coresponding notes
+		for( var p in dict ){
+			// create aside 
+			var aside = document.createElement('aside');
+			aside.style.float = "right";
+			aside.style.fontSize = "12px";
+			aside.style.width = "250px";
+			aside.style.marginRight = "-"+(250+32)+"px";
+			// append individual notes 
+			for (var j = 0; j < dict[p].length; j++) {
+				var n = this.makeNote( dict[p][j].num, dict[p][j].info );
+				aside.appendChild( n );
+			}
+			// insert aside into parent
+			var pNode = dict[p][0].ele.parentNode;
+			pNode.insertBefore( aside, pNode.childNodes[0] );
+
+		}
+
 	}
 
 	fadeOutLoader() {
