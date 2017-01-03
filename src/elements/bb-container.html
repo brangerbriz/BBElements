@@ -260,6 +260,19 @@
 					}
 			
 				}
+
+				if( media.getAttribute('fullwidth')==null){
+					if( innerWidth < 767 ){
+						for (var i = 0; i < media.children.length; i++) 
+							if( media.children[i].id=="caption" ) 
+								media.children[i].style.marginLeft="-76px";
+						
+					} else {
+						for (var i = 0; i < media.children.length; i++) 
+							if( media.children[i].id=="caption" ) 
+								media.children[i].style.marginLeft="0px";
+					}
+				}
 			},
 
 			resize: function(){
