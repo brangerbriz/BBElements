@@ -125,6 +125,7 @@ class BBElementsClass {
 		s2.innerHTML = info; // maybe parse string for <a> && createElement('a')
 							 // rather than .innerHTML, which is 'technically' unfavorable
 		var div = document.createElement('div');
+		div.style.marginBottom = "10px";
 		div.appendChild( s1 );
 		div.appendChild( s2 );
 		return div;

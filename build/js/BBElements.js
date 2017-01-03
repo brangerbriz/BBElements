@@ -9,7 +9,7 @@ this.hideLoader();}}hideLoader(){this.fadeOutLoader();}lazyLoadList(){// console
 this.list.forEach(function(elementURL){var elImport=document.createElement('link');elImport.rel='import';elImport.href=elementURL;document.head.appendChild(elImport);});}numberNotes(){var notes=document.querySelectorAll('bb-note');for(var i=0;i<notes.length;i++){notes[i].textContent=i+1;}}makeNote(num,info){var s1=document.createElement('span');var s2=document.createElement('span');s1.style.color="#e40477";s1.textContent=num+'. ';// s2.style.color = "#c4c4c4";
 s2.style.color="#A7A8A7";s2.innerHTML=info;// maybe parse string for <a> && createElement('a')
 // rather than .innerHTML, which is 'technically' unfavorable
-var div=document.createElement('div');div.appendChild(s1);div.appendChild(s2);return div;}makeMarginalNotes(){var notes=document.querySelectorAll('bb-note');// organize notes by parent elements
+var div=document.createElement('div');div.style.marginBottom="10px";div.appendChild(s1);div.appendChild(s2);return div;}makeMarginalNotes(){var notes=document.querySelectorAll('bb-note');// organize notes by parent elements
 var dict={};for(var i=0;i<notes.length;i++){var pid;// parent id
 var parent=notes[i].parentNode;if(parent.getAttribute('data-pid')===null){pid=i;// create pid ...
 parent.setAttribute('data-pid',pid);// ...&& add prop to dict
