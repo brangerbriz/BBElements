@@ -40,6 +40,10 @@ class BBElementsClass {
 		window.addEventListener('load',()=>{
 			this.numberNotes();
 			this.makeMarginalNotes();
+			if( document.querySelector('bb-container') !== null ){
+				// if responsive container present, do an initial resize
+				document.querySelector('bb-container').resize();
+			}
 		});
 
 	}
