@@ -132,7 +132,8 @@ class BBElementsClass {
 
 	makeMarginalNotes(){
 		var notes = document.querySelectorAll('bb-note');
-		for (var i = 0; i < notes.length; i++) {
+		// for (var i = 0; i < notes.length; i++) {
+		for (var i = notes.length-1; i >= 0; i--) {
 			var n = this.makeNote( notes[i].textContent, notes[i].getAttribute('info') );
 			notes[i].parentNode.insertBefore( n, notes[i].parentNode.childNodes[0] );
 			// notes[i].parentNode.appendChild( n ); // << would need to go in the bottom for mobile????
