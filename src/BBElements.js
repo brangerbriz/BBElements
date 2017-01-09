@@ -9,23 +9,7 @@ class BBElementsClass {
 
 		this.ready = [];
 
-		this.allBBElements = [
-			'bb-container',
-			'bb-logo',
-			'bb-h1',
-			'bb-h2',
-			'bb-h3',
-			'bb-p',
-			'bb-row',
-			'bb-cell',
-			'bb-media',
-			'bb-quote',
-			'bb-note',
-			'bb-tags',
-			'bb-footer'
-		];
-
-		this.testElements = require('./js/BBList');
+		this.allBBElements = require('./js/BBList');
 
 		this.fontStyes = require('./js/BBFonts');
 		this.usingUnresolvedStyles = false;

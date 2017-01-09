@@ -52,6 +52,14 @@ module.exports =
 				"color:#e40477;"+
 				"text-transform: uppercase;"+
 			'}'+
+			'bb-div {'+
+				"display: block;"+
+				"font-family: 'sans-serif';"+
+				"font-size: 16px;"+
+				"line-height: 25px;"+
+				"padding: 28px 0px;"+
+				"color:#000;"+
+			'}'+
 			'bb-p {'+
 				"display: block;"+
 				"font-family: 'sans-serif';"+
