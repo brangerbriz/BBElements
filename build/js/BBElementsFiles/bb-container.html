@@ -30,6 +30,9 @@
 			:host:before, :host:after{
 				box-sizing: border-box;
 			}
+
+			:host ::content ::-moz-selection { background: #e40477; color:#fff; }
+			:host ::content ::selection { background: #e40477; color:#fff; }
 			
 			:host ::content > bb-h1,
 			:host ::content > bb-h2,
