@@ -1,21 +1,4 @@
-(function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f;}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e);},l,l.exports,e,t,n,r);}return n[o].exports;}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s;})({1:[function(require,module,exports){/* jshint esversion: 6 */class BBElementsClass{constructor(){this.list=['js/BBElementsFiles/polymer/polymer.html'];this.ready=[];// this.allBBElements = [
-// 	'bb-container',
-// 	'bb-logo',
-// 	'bb-h1',
-// 	'bb-h2',
-// 	'bb-h3',
-// 	'bb-p',
-// 	'bb-div',
-// 	'bb-row',
-// 	'bb-cell',
-// 	'bb-media',
-// 	'bb-quote',
-// 	'bb-note',
-// 	'bb-tags',
-// 	'bb-footer'
-// ];
-this.allBBElements=require('./js/BBList');// this.testElements = require('./js/BBList');
-this.fontStyes=require('./js/BBFonts');this.usingUnresolvedStyles=false;this.unresolvedStyles=require('./js/UnresolvedStyles');// load fonts 
+(function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f;}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e);},l,l.exports,e,t,n,r);}return n[o].exports;}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s;})({1:[function(require,module,exports){/* jshint esversion: 6 */class BBElementsClass{constructor(){this.list=['js/BBElementsFiles/polymer/polymer.html'];this.ready=[];this.allBBElements=require('./js/BBList');this.fontStyes=require('./js/BBFonts');this.usingUnresolvedStyles=false;this.unresolvedStyles=require('./js/UnresolvedStyles');// load fonts 
 var style=document.createElement('style');style.type='text/css';style.innerHTML=this.fontStyes;document.querySelector('head').appendChild(style);window.addEventListener('load',()=>{this.numberNotes();this.makeMarginalNotes();if(document.querySelector('bb-container')!==null){// if responsive container present, do an initial resize
 document.querySelector('bb-container').resize();}});}// ~ ~ ~ ~ ~ ~ ~ ~ ~ ~  ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ private methods
 removeUnresolvedRule(tagName){for(var i=0;i<document.styleSheets.length;i++){if(document.styleSheets[i].ownerNode.id=="unresolvedStyles"){var sheet=document.styleSheets[i];for(var j=0;j<sheet.cssRules.length;j++){if(sheet.cssRules[j].selectorText==tagName){sheet.deleteRule(j);if(tagName=="bb-p"){for(var x=0;x<4;x++)sheet.deleteRule(j);}else if(tagName=="bb-media"){for(var y=0;y<2;y++)sheet.deleteRule(j);}else if(tagName=="bb-tags"){sheet.deleteRule(j);}else if(tagName=="bb-container"){sheet.deleteRule(j);}break;}}}}}eleReady(ELE){// called inside bb-elements html files
