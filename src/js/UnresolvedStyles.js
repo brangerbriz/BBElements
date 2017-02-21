@@ -147,4 +147,14 @@ module.exports =
 				"padding: 9px 10px;"+
 				"margin-right:6px;"+
 				"line-height: 48px;"+
+			"}"+
+			"bb-post-summary {"+
+				"display: block;"+
+				"font-family: 'sans-serif';"+
+				"font-size: 16px;"+
+				"line-height: 25px;"+
+				"padding: 28px 0px;"+
+				"color:#000;"+
+				"max-width: 600px;"+
+				"margin: 0 auto;"+
 			"}";
