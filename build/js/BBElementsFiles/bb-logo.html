@@ -7,13 +7,13 @@
 		renders an svg version of our logo
 
 	@element
-		<bb-logo></bb-logo> 
-	
+		<bb-logo></bb-logo>
+
 	@attributes
 		{
 			"markonly": {
 				"type": "Boolean",
-				"value": "false", 
+				"value": "false",
 				"info": "only displays the (B) mark"
 			},
 
@@ -40,19 +40,19 @@
 				"type": "String",
 				"value": "#ffffff",
 				"info": "changes the color of the B in the circle"
-			}			
+			}
 		}
-	
+
 -->
 	<template>
 
-		<style>			
+		<style>
 
 			:host {
 				--text-color: #000000;
 				--brand-color: #e40477;
 				--fill-color:#ffffff;
-				display: inline-block;				
+				display: inline-block;
 			}
 
 			.brand-color{ fill:var(--brand-color); }
@@ -60,8 +60,8 @@
 			.fill-color { fill:var(--fill-color ); }
 
 		</style>
-		
-		<svg id="logo" data-name="Layer 1" width="200" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 198.0 41.9">			
+		<a href="http://brangerbriz.com">
+		<svg id="logo" data-name="Layer 1" width="200" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 198.0 41.9">
 			<!-- circle B mark -->
 
 			<rect
@@ -72,19 +72,19 @@
 				x="6.2139831"
 				y="7.8118649" />
 
-			<polygon 
+			<polygon
 				id="mark_bottom_line"
-				class="brand-color" 
+				class="brand-color"
 				points="13.85 23.32 13.85 25.67 27.99 25.67 27.99 23.32 18.56 23.32 13.85 23.32" />
-			
+
 			<rect id="mark_top_line" class="brand-color" x="18.56" y="16.25" width="9.43" height="2.36"/>
-			
-			<path id="mark_circle" class="brand-color" 
+
+			<path id="mark_circle" class="brand-color"
 				d="M21,0a21,21,0,1,0,21,21A21,21,0,0,0,21,0ZM32.7,16.25V30.39H9.13V18.6h4.71V11.53H32.7v4.71Z"/>
 
 			<!-- full name -->
 
-			<!-- B -->			
+			<!-- B -->
 			<g
 				id="l0"
 				transform="matrix(0.99992334,0,0,-0.9956891,62.856341,22.717548)">
@@ -97,7 +97,7 @@
 			</g>
 			<!-- r -->
 			<g
-				id="l1" 
+				id="l1"
 				transform="matrix(0.99992334,0,0,-0.9956891,74.322768,22.616386)">
 				<path
 				d="m 0,0 0,-7.755 -4.221,0 0,14.11 3.968,0 0,-1.5 0.049,0 c 0.738,1.45 1.908,1.983 3.535,1.983 l 0,-4.246 C 1.475,2.541 0,2.187 0,0"
@@ -160,16 +160,16 @@
 				style="fill-opacity:1;fill-rule:nonzero;stroke:none"
 				id="path3458"
 				inkscape:connector-curvature="0" />
-			
+
 			</g>
-			
+
 			<!-- underscore -->
 			<path
 				id="underscore"
 				d="m 144.60227,30.337955 13.71094,0 0,4.114188 -13.71094,0 0,-4.114187 z"
-				class="brand-color"				
+				class="brand-color"
 				inkscape:connector-curvature="0" />
-			
+
 			<!-- B -->
 			<g
 				id="l7"
@@ -211,19 +211,20 @@
 			</g>
 
 		</svg>
+		</a>
 
 
 	</template>
 	<script>
 		Polymer({
 			is:"bb-logo",
-			
+
 			properties: {
 
 				markonly: {
 					type: Boolean,
-					value: false, 
-					reflectToAttribute: true, 
+					value: false,
+					reflectToAttribute: true,
 					observer: 'markChange'
 				},
 
@@ -258,13 +259,13 @@
 			},
 
 			// ~ ~ ~ ~ ~ ~
-			
+
 			created: function(){
 				// this.style.border = "2px solid red";
 				// border: 2px solid red;
 				// width:200px; height:41px;
 			},
-			
+
 			ready: function(){
 				if( typeof BBElements !== "undefined" )
 					BBElements.eleReady( this );
@@ -283,20 +284,20 @@
 
 			markChange: function( newVal, oldVal ){
 				// var aspectRatio = 198/41.9;
-				if( newVal==true )	
-					this.$.logo.viewBox.baseVal.width = "41.9";					
-				else 
-					this.$.logo.viewBox.baseVal.width = "198.0";				
-					
+				if( newVal==true )
+					this.$.logo.viewBox.baseVal.width = "41.9";
+				else
+					this.$.logo.viewBox.baseVal.width = "198.0";
+
 				// this is some strange behavior?
 				// if i don't change the width first to match the new baseVal proportionally
 				// && then again to what it was originally
 				// then it doen't scale right
-				var w = this.width; 
+				var w = this.width;
 				if( typeof w == "number"){
 					this.width = w / (200/41.9);
 					this.width = w;
-				}			
+				}
 			},
 
 			widthChange: function( newVal, oldVal ){
@@ -306,7 +307,7 @@
 			textColorChange: function( newVal ){
 				this.customStyle['--text-color'] = newVal;
 			},
-			
+
 			fillColorChange: function( newVal ){
 				this.customStyle['--fill-color'] = newVal;
 			},
