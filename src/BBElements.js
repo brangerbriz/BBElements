@@ -191,7 +191,7 @@ class BBElementsClass {
 				console.log('...not ready');
 				setTimeout(function(){
 					self.initResize();
-				},5000);
+				},500);
 			}
 		}
 	}
