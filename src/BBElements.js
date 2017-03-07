@@ -4,7 +4,7 @@ class BBElementsClass {
 	constructor(){
 
 		this.list = [
-			'js/BBElementsFiles/polymer/polymer.html' 
+			'js/BBElementsFiles/polymer/polymer.html'
 		];
 
 		this.ready = [];
@@ -15,19 +15,16 @@ class BBElementsClass {
 		this.usingUnresolvedStyles = false;
 		this.unresolvedStyles = require('./js/UnresolvedStyles');
 
-		// load fonts 
+		// load fonts
 		var style = document.createElement('style');
 		style.type = 'text/css';
-		style.innerHTML = this.fontStyes;				
+		style.innerHTML = this.fontStyes;
 		document.querySelector('head').appendChild(style);
 
 		window.addEventListener('load',()=>{
 			this.numberNotes();
 			this.makeMarginalNotes();
-			if( document.querySelector('bb-container') !== null ){
-				// if responsive container present, do an initial resize
-				document.querySelector('bb-container').resize();
-			}
+			this.initResize();
 		});
 
 	}
@@ -42,18 +39,18 @@ class BBElementsClass {
 					if( sheet.cssRules[j].selectorText == tagName ){
 						sheet.deleteRule(j);
 						if(tagName=="bb-p"){
-							for (var x = 0; x < 4; x++) sheet.deleteRule(j);							
+							for (var x = 0; x < 4; x++) sheet.deleteRule(j);
 						} else if(tagName=="bb-media"){
-							for (var y = 0; y < 2; y++) sheet.deleteRule(j);							
+							for (var y = 0; y < 2; y++) sheet.deleteRule(j);
 						} else if(tagName=="bb-tags"){
-							sheet.deleteRule(j);							
-						} else if(tagName=="bb-container"){							
-							sheet.deleteRule(j);							
+							sheet.deleteRule(j);
+						} else if(tagName=="bb-container"){
+							sheet.deleteRule(j);
 						}
 						break;
 					}
 				}
-			}		
+			}
 		}
 	}
 
@@ -65,13 +62,13 @@ class BBElementsClass {
 				// update progress bar
 				var progress = BBElements.ready.length/(BBElements.list.length-1);
 				this.progressBar.style.width = (this.loadingBar.offsetWidth-2) * progress +"px";
-			}			
+			}
 			if( this.usingUnresolvedStyles ) this.removeUnresolvedRule( ele );
 		} else if( this.allBBElements.indexOf( ele ) <0  ) {
 			throw new Error('BBElements: '+ele+' is not an official BB Element');
 		}
 
-		if( this.ready.length == (this.list.length-1) && this.progressBar ){ 
+		if( this.ready.length == (this.list.length-1) && this.progressBar ){
 			// 					 ^ -1 for polymer lib
 			this.hideLoader();
 		}
@@ -99,7 +96,7 @@ class BBElementsClass {
 		}
 	}
 
-	makeNote( num, info ) {	
+	makeNote( num, info ) {
 		var s1 = document.createElement('span');
 		var s2 = document.createElement('span');
 		s1.style.color = "#e40477";
@@ -117,19 +114,19 @@ class BBElementsClass {
 
 	makeMarginalNotes(){
 		var notes = document.querySelectorAll('bb-note');
-		
+
 		// organize notes by parent elements
 		var dict = {};
 		for (var i = 0; i < notes.length; i++) {
 			var pid; // parent id
 			var parent = notes[i].parentNode;
-			
+
 			if( parent.getAttribute('data-pid')===null ){
 				pid = i;
 				// create pid ...
 				parent.setAttribute('data-pid',pid);
 				// ...&& add prop to dict
-				dict[pid] = [];				
+				dict[pid] = [];
 			} else {
 				// get pid
 				pid = parent.getAttribute('data-pid');
@@ -145,13 +142,13 @@ class BBElementsClass {
 
 		// create an "aside" per parent element && insert coresponding notes
 		for( var p in dict ){
-			// create aside 
+			// create aside
 			var aside = document.createElement('aside');
 			aside.style.float = "right";
 			aside.style.fontSize = "12px";
 			aside.style.width = "250px";
 			aside.style.marginRight = "-"+(250+32)+"px";
-			// append individual notes 
+			// append individual notes
 			for (var j = 0; j < dict[p].length; j++) {
 				var n = this.makeNote( dict[p][j].num, dict[p][j].info );
 				aside.appendChild( n );
@@ -168,7 +165,7 @@ class BBElementsClass {
 		var self = this;
 
 		function func() {
-			// interval / duration 
+			// interval / duration
 			var dec = 100 / 500;
 			var opac = parseFloat(self.loadingScreen.style.opacity) - dec;
 			self.loadingScreen.style.opacity = opac;
@@ -182,11 +179,28 @@ class BBElementsClass {
 		var fading = window.setInterval(func, 100);
 	}
 
+	initResize() {
+		var self = this;
+		if( document.querySelector('bb-container') !== null ){
+			// if responsive container present...
+			if( typeof document.querySelector('bb-container').resize=="function" ){
+				// ...and if it's methods are loaded, do an initial resize
+				document.querySelector('bb-container').resize();
+				console.log('got it!');
+			} else {
+				console.log('...not ready');
+				setTimeout(function(){
+					self.initResize();
+				},5000);
+			}
+		}
+	}
+
 	// ~ ~ ~ ~ ~ ~ ~ ~ ~ ~  ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ public methods
 
 	import( vulcanizedFile ){
 		var self = this;
-		
+
 		var progress = 0;
 		var total = 3;
 
@@ -195,7 +209,7 @@ class BBElementsClass {
 				progress++;
 				self.progressBar.style.width = (self.loadingBar.offsetWidth-2) * progress/total +"px";
 				if( progress == total ) self.hideLoader();
-			}			
+			}
 		}
 
 		function loadPolymerAndVFile(){
@@ -218,16 +232,16 @@ class BBElementsClass {
 		* Credit: Glen Maddern (geelen on GitHub)
 		*/
 		// ++ also load polymer && all the bb-elements from vulcanized file
-		var webComponentsSupported = ('registerElement' in document && 
-			'import' in document.createElement('link') && 
+		var webComponentsSupported = ('registerElement' in document &&
+			'import' in document.createElement('link') &&
 			'content' in document.createElement('template'));
 
 		if (!webComponentsSupported) {
 			var wcPoly = document.createElement('script');
 			wcPoly.src = 'js/BBElementsFiles/webcomponentsjs/webcomponents-lite.min.js';
-			wcPoly.onload = function(){ 
-				updateProgBar(); 
-				loadPolymerAndVFile(); 
+			wcPoly.onload = function(){
+				updateProgBar();
+				loadPolymerAndVFile();
 			};
 			document.head.appendChild(wcPoly);
 		} else {
@@ -241,14 +255,14 @@ class BBElementsClass {
 
 		// add chosen elements to load list
 		if( typeof eleList !== "undefined" ){
-			
+
 			if( eleList instanceof Array ){
-				
+
 				eleList.forEach(function(str){
 					if( typeof str == "string" ) self.list.push( 'js/BBElementsFiles/'+str+'.html' );
 					else throw new Error('BBElements lazyLoad: expecting an Array of stirngs');
 				});
-			
+
 			} else {
 				throw new Error('BBElements lazyLoad: expecting an Array of strings, but got a ' + typeof eleList );
 			}
@@ -264,8 +278,8 @@ class BBElementsClass {
 		* Credit: Glen Maddern (geelen on GitHub)
 		*/
 		// ++ also load polymer && all the bb-elements listed
-		var webComponentsSupported = ('registerElement' in document && 
-			'import' in document.createElement('link') && 
+		var webComponentsSupported = ('registerElement' in document &&
+			'import' in document.createElement('link') &&
 			'content' in document.createElement('template'));
 
 		if (!webComponentsSupported) {
@@ -289,7 +303,7 @@ class BBElementsClass {
 		var style = document.createElement('style');
 		style.type = 'text/css';
 		style.id = "unresolvedStyles";
-		style.innerHTML = this.unresolvedStyles;		
+		style.innerHTML = this.unresolvedStyles;
 		document.querySelector('head').appendChild(style);
 	}
 
@@ -336,7 +350,7 @@ window.BBElements = new BBElementsClass();
 
 
 /*
-	
+
 	GENERAL TODO:
 	- script for creating custom vulcanized builds?
 	- fix mobile full-width image bug ( appears on only some phones )
