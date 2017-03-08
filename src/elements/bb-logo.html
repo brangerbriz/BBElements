@@ -304,16 +304,28 @@
 				this.$.logo.setAttribute('width', newVal);
 			},
 
-			textColorChange: function( newVal ){
+			textColorChange: function( newVal, oldVal ){
 				this.customStyle['--text-color'] = newVal;
+				var tc = Polymer.dom(this.root).querySelectorAll('.text-color');
+				tc.forEach(function(ele){
+					ele.style.fill = newVal;
+				});
 			},
 
 			fillColorChange: function( newVal ){
 				this.customStyle['--fill-color'] = newVal;
+				var fc = Polymer.dom(this.root).querySelectorAll('.fill-color');
+				fc.forEach(function(ele){
+					ele.style.fill = newVal;
+				});
 			},
 
 			brandColorChange: function( newVal ){
 				this.customStyle['--brand-color'] = newVal;
+				var bc = Polymer.dom(this.root).querySelectorAll('.brand-color');
+				bc.forEach(function(ele){
+					ele.style.fill = newVal;
+				});
 			}
 		});
 	</script>
