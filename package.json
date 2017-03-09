@@ -8,9 +8,10 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "lint": "jshint --reporter=node_modules/jshint-stylish src/* ; exit 0",
+    "lint": "jshint --exclude=src/highlightJS/* --reporter=node_modules/jshint-stylish src/* ; exit 0",
     "docs": "cd docs ; node make.js",
-    "prebuild": "npm run lint ; node src/utils/PreBuild.js",
+    "vulcanize": "node src/utils/Vulcanize.js",
+    "prebuild": "npm run lint ; npm run vulcanize ; node src/utils/PreBuild.js",
     "build": "node src/utils/ListElements.js ; browserify src/BBElements.js | babel > build/js/BBElements.js",
     "postbuild": "npm run docs",
     "watch": "nodemon -w src/*.js -x 'npm run build'"
@@ -30,7 +31,8 @@
     "jshint-stylish": "^2.2.0",
     "ncp": "^2.0.0",
     "nodemon": "^1.9.2",
-    "rimraf": "^2.5.4"
+    "rimraf": "^2.5.4",
+    "vulcanize": "^1.15.3"
   },
   "babel": {
     "presets": [

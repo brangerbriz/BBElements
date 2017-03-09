@@ -36,14 +36,14 @@
 		<style>
 
 			html,body{ padding:0; margin:0; }
-			
+
 			.date { margin-top:-54px }
 
 			bb-row[noborder]{
 				margin-bottom: 45px;
 			}
 
-			@media (max-width: 1280px) { 
+			@media (max-width: 1280px) {
 				bb-cell:nth-child(2) {
 					margin-left: -25%;
 				}
@@ -58,21 +58,22 @@
 			// LOAD THE CUSTOM ELEMENTS!
 			BBElements.lazyLoad();
 
+
 			// alternative loading options include:
 			/*
-			
+
 			BBElements.lazyLoad([
 				'bb-logo',
 				'bb-h1',
 				'etc...'
 			]);
-			
+
 			// ... or ...
-			
-			BBElements.import('path/to/vulcanized-file.html');
+
+			BBElements.import('js/BBElementsFiles/vulcanized-elements.html');
 			*/
-			
-			// OPTIONAL ( RECOMMENDED ) 
+
+			// OPTIONAL ( RECOMMENDED )
 			BBElements.usePlaceholderCSS();
 
 		</script>
@@ -86,11 +87,11 @@
 		</script>
 
 		<bb-container>
-		
+
 			<bb-logo></bb-logo>
 
 			<bb-h1>Highest-level Title Element </bb-h1>
-			
+
 			<bb-h2>Subhead Level 1 </bb-h2>
 
 			<bb-row>
@@ -138,7 +139,7 @@
 				Lorem ipsum dolor sit amet, <a href="#">consectetur</a> adipisicing elit. Ab, veniam voluptatibus impedit! Iusto veritatis dolores aut. Quidem minus tenetur, ipsa, architecto odit nesciunt. Tempora necessitatibus, incidunt, similique maxime ducimus sint. Lorem <code> new BB.Color()</code> sit amet, consectetur adipisicing elit. Ab, veniam voluptatibus <bb-note info="this is an important marginal note"></bb-note> impedit! Iusto veritatis dolores aut. Quidem minus tenetur, ipsa, architecto odit nesciunt. Tempora necessitatibus, incidunt, similique maxime ducimus sint.<bb-note info="this is an another important marginal note in this same paragraph"></bb-note>
 			</bb-p>
 
-			<bb-p>				
+			<bb-p>
 				Lorem ipsum dolor sit amet, <a href="#">consectetur</a> adipisicing elit. Ab, veniam voluptatibus impedit! Iusto veritatis dolores aut. Quidem minus tenetur, ipsa, architecto odit nesciunt. Tempora necessitatibus, incidunt, similique maxime ducimus sint. Lorem <code> new BB.Color()</code> sit amet, consectetur adipisicing elit. Ab, veniam voluptatibus impedit! Iusto veritatis dolores aut. Quidem minus tenetur, ipsa, architecto odit nesciunt. Tempora necessitatibus, incidunt, similique maxime ducimus sint. sit amet, consectetur adipisicing elit. Ab, veniam voluptatibus impedit! Iusto veritatis dolores aut. Quidem minus tenetur, ipsa, architecto odit nesciunt. Tempora necessitatibus, incidunt, similique maxime ducimus sint.
 				<bb-quote>
 					Cras euismod libero dolor, at egestas ante hendrerit ac
@@ -149,14 +150,20 @@
 			<bb-p>
 				Lorem ipsum dolor sit amet, <a href="#">consectetur</a> adipisicing elit. Ab, veniam voluptatibus impedit! Iusto veritatis dolores aut. Quidem minus tenetur, ipsa, architecto odit nesciunt. Tempora necessitatibus, incidunt, similique maxime ducimus sint. Lorem <code> new BB.Color()</code> sit amet, consectetur adipisicing elit. Ab, veniam voluptatibus impedit! Iusto veritatis dolores aut. Quidem minus tenetur, ipsa, architecto odit nesciunt. Tempora necessitatibus, incidunt, similique maxime ducimus sint.
 			</bb-p>
-				
-			<!-- <bb-quote credit="somebody worth quoting">
-				Cras euismod libero dolor, at egestas ante hendrerit ac
-			</bb-quote> -->
 
-			<bb-quote credit="somebody worth quoting">
-				RNNs are becoming increasingly able to synthesize sequential patterns like text, speech, and even music.
-			</bb-quote>
+			<bb-code>
+				function hey(){
+					if( x > 18 ){
+						console.log("bigger");
+					} else {
+						console.log("smaller");
+					}
+
+					for(var i=0; i<2; i++){
+						// do something else
+					}
+				}
+			</bb-code>
 
 			<bb-p>
 				Lorem ipsum dolor sit amet, <a href="#">consectetur</a> adipisicing elit. Ab, veniam voluptatibus impedit! Iusto veritatis dolores aut. Quidem minus tenetur, ipsa, architecto odit nesciunt. Tempora necessitatibus, incidunt, similique maxime ducimus sint. Lorem sit amet <bb-note info="this is a note about a thing that has to do with what is <a href='https://duckduckgo.com/?q=written'>written</a> in the paragraph"></bb-note>, consectetur adipisicing elit. Ab, veniam voluptatibus impedit! Iusto veritatis dolores aut. Quidem minus tenetur, ipsa, architecto odit nesciunt. Tempora necessitatibus, incidunt, similique maxime ducimus sint.
@@ -174,7 +181,7 @@
 			</bb-tags>
 
 			<bb-footer back-text="Back to all Projects" back-url="#"></bb-footer>
-		
+
 		</bb-container>
 
 		<script>
