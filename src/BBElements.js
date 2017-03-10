@@ -24,12 +24,22 @@ class BBElementsClass {
 		window.addEventListener('load',()=>{
 			this.numberNotes();
 			this.makeMarginalNotes();
-			this.initResize();
 		});
 
 	}
 
 	// ~ ~ ~ ~ ~ ~ ~ ~ ~ ~  ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ private methods
+
+	lazyLoadList(){
+		// console.log('BBElements: loaded 0 of '+(this.list.length-1));
+		// load polymer && all the bb-elements listed
+		this.list.forEach(function(elementURL) {
+			var elImport = document.createElement('link');
+			elImport.rel = 'import';
+			elImport.href = elementURL;
+			document.head.appendChild(elImport);
+		});
+	}
 
 	removeUnresolvedRule( tagName ){
 		for (var i = 0; i < document.styleSheets.length; i++) {
@@ -72,22 +82,36 @@ class BBElementsClass {
 			// 					 ^ -1 for polymer lib
 			this.hideLoader();
 		}
+
+	 	if( ele==='bb-container'){
+			document.querySelector('bb-container').resize();
+		}
 	}
 
 	hideLoader(){
 		this.fadeOutLoader();
 	}
 
-	lazyLoadList(){
-		// console.log('BBElements: loaded 0 of '+(this.list.length-1));
-		// load polymer && all the bb-elements listed
-		this.list.forEach(function(elementURL) {
-			var elImport = document.createElement('link');
-			elImport.rel = 'import';
-			elImport.href = elementURL;
-			document.head.appendChild(elImport);
-		});
+	fadeOutLoader() {
+		var self = this;
+
+		function func() {
+			// interval / duration
+			var dec = 100 / 500;
+			var opac = parseFloat(self.loadingScreen.style.opacity) - dec;
+			self.loadingScreen.style.opacity = opac;
+
+			if(opac <= 0){
+				window.clearInterval(fading);
+				self.loadingScreen.remove();
+			}
+		}
+
+		var fading = window.setInterval(func, 100);
 	}
+
+
+				// ~	~	~	~	~	~	~ logic for marginal notes
 
 	numberNotes(){
 		var notes = document.querySelectorAll('bb-note');
@@ -159,41 +183,6 @@ class BBElementsClass {
 
 		}
 
-	}
-
-	fadeOutLoader() {
-		var self = this;
-
-		function func() {
-			// interval / duration
-			var dec = 100 / 500;
-			var opac = parseFloat(self.loadingScreen.style.opacity) - dec;
-			self.loadingScreen.style.opacity = opac;
-
-			if(opac <= 0){
-				window.clearInterval(fading);
-				self.loadingScreen.remove();
-			}
-		}
-
-		var fading = window.setInterval(func, 100);
-	}
-
-	initResize() {
-		var self = this;
-		if( document.querySelector('bb-container') !== null ){
-			// if responsive container present...
-			if( typeof document.querySelector('bb-container').resize=="function" ){
-				// ...and if it's methods are loaded, do an initial resize
-				document.querySelector('bb-container').resize();
-				console.log('got it!');
-			} else {
-				console.log('...not ready');
-				setTimeout(function(){
-					self.initResize();
-				},500);
-			}
-		}
 	}
 
 	// ~ ~ ~ ~ ~ ~ ~ ~ ~ ~  ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ public methods
@@ -354,6 +343,5 @@ window.BBElements = new BBElementsClass();
 	GENERAL TODO:
 	- script for creating custom vulcanized builds?
 	- fix mobile full-width image bug ( appears on only some phones )
-
 
 */
