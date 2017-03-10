@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+		<meta http-equiv="x-ua-compatible" content="ie=edge">
+
+		<title> BBElements Docs </title>
+
+		<!-- BB Meta Template -->
+
+		<link rel="icon" type="image/png" href="bb.svg" />
+		<meta name="description" content="we are a full­service digital agency+lab made up of artists, strategists, educators && programmers bent on articulating contemporary culture. we produce award winning work for brands, agencies, and cultural institutions around the world.">
+		<!-- for Google+ -->
+		<meta itemprop="name" content="Branger_Briz">
+		<meta itemprop="description" content="we are a full­service digital agency+lab made up of artists, strategists, educators && programmers bent on articulating contemporary culture">
+		<meta itemprop="image" content="bb.svg">
+		<!-- for Twitter -->
+		<meta name="twitter:card" content="summary_large_image">
+		<meta name="twitter:site" content="@branger_briz">
+		<meta name="twitter:title" content="Branger_Briz">
+		<meta name="twitter:description" content="we are a full­service digital agency+lab made up of artists, strategists, educators && programmers bent on articulating contemporary culture.">
+		<meta name="twitter:creator" content="@branger_briz">
+		<!-- Twitter summary card with large image must be at least 280x150px -->
+		<meta name="twitter:image:src" content="bb.svg">
+		<!-- for Facebook -->
+		<meta property="og:title" content="Branger_Briz" />
+		<meta property="og:type" content="article" />
+		<meta property="og:url" content="http://brangerbriz.com/" />
+		<meta property="og:image" content="bb.svg" />
+		<meta property="og:description" content="we are a full­service digital agency+lab made up of artists, strategists, educators && programmers bent on articulating contemporary culture." />
+		<meta property="og:site_name" content="Branger_Briz" />
+
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+
+		<style>
+
+			html,body{ padding:0; margin:0; }
+
+			@media (max-width: 1280px) {
+				bb-cell:nth-child(2) {
+					margin-left: -25%;
+				}
+			}
+			.attr-info { border-bottom:1px solid #c4c4c4; }
+			.attr-info bb-cell { color:#888 }
+
+			.ele-doc { padding-top: 20px; }
+
+			#menu {
+				position: absolute;;
+				top:10px; left:10px;
+				z-index: 2;
+			}
+
+			#sub-ele-menu { display: none; }
+
+			@media (max-width: 990px) {
+				#menu {
+					/*background-color: #fff;*/
+					width: 100%;
+					padding:10px;
+					height:50px;
+					text-align: center;
+					background: -moz-linear-gradient(top,  rgba(255,255,255,1) 54%, rgba(255,255,255,0) 100%);
+					background: -webkit-linear-gradient(top,  rgba(255,255,255,1) 54%,rgba(255,255,255,0) 100%);
+					background: linear-gradient(to bottom,  rgba(255,255,255,1) 54%,rgba(255,255,255,0) 100%);
+					filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#00ffffff',GradientType=0 );
+				}
+				bb-logo{ opacity: 0;}
+			}
+
+			#menu a {
+				font-family: 'Graphik-Regular', sans-serif;
+				display: block;
+				padding: 5px;
+				background: #e40477;
+				color:#fff;
+				text-decoration: none;
+				font-weight: bold;
+				margin: 2px;
+			}
+			#sub-ele-menu a {
+				background:#EBFCFF;
+				color:#000;
+				font-weight: normal;
+			}
+
+			#library, #elements, #development { padding-top: 20px }
+
+		</style>
+
+		<script src="js/BBElements.js"></script>
+		<script>
+
+			// LOAD THE CUSTOM ELEMENTS!
+			BBElements.lazyLoad();
+
+			// alternative loading options include:
+			/*
+
+			BBElements.lazyLoad([
+				'bb-logo',
+				'bb-h1',
+				'etc...'
+			]);
+
+			// ... or ...
+
+			BBElements.import('path/to/vulcanized-file.html');
+			*/
+
+			// OPTIONAL ( RECOMMENDED )
+			BBElements.usePlaceholderCSS();
+
+		</script>
+    </head>
+    <body>
+
+        <script>
+			// OPTIONAL ( alternative to .usePlaceHolderCSS() )
+			// BBElements.useLoadingScreen();
+		</script>
+
+		<section id="menu">
+			<a href="#library">Using the Library</a>
+			<a href="#elements">Using the Elements</a>
+			<div id="sub-ele-menu"></div>
+			<a href="#development">Development Notes</a>
+		</section>
+
+        <bb-container>
+
+            <bb-logo></bb-logo>
+
+            <bb-h1>BBElements.js</bb-h1>
+            <bb-h3>documentation page</bb-h3>
+
+            <bb-p id="introTxt">
+                BBElements.js is a front-end JavaScript library for using custom HTML elements<bb-note info="Web components are a set of web platform APIs that allow you to create new custom, reusable, encapsulated HTML tags to use in web pages and web apps. There are four specifications: <a href='https://www.webcomponents.org/introduction' target='_blank'>Custom Elements, Shadow DOM, HTML Imports and HTML Templates</a>. All of which are in use in our library"></bb-note> that conform to the Branger_Briz brand. The source code can be found at <a href="https://github.com/brangerbriz/BBElements" target="_blank">BBElements GitHub Repo</a>. The library uses the <a href="https://github.com/webcomponents/webcomponentsjs" target="_blank">webcomponents polyfill</a> as well as the <a href="https://www.polymer-project.org/1.0/" target="_blank">Polymer library</a> for creating the actual custom elements. The BBElements.js library itself handles the following:
+                <ul>
+                    <li>conditionally loads <a href="https://github.com/webcomponents/webcomponentsjs" target="_blank">polyfill</a></li>
+                    <li>lazy loads <a href="https://www.polymer-project.org/1.0/" target="_blank">Polymer</a></li>
+                    <li>lazy loads BB fonts CSS</li>
+					<li>conditionally loads <a href="https://highlightjs.org/" target="_blank">highlightJS</a> ( for <code>&lt;bb-code&gt;</code>)</li>
+                    <li>lazy loads elements ( all or from a custom list )</li>
+                    <li>alternativly, can load a <a href="https://github.com/Polymer/vulcanize" target="_blank">vulcanized</a> elements html file</li>
+                    <li>provides optional loading helpers:</li>
+                    <ul>
+                    	<li>display unresolved CSS on elements before they've finished loading ( removed after fully loaded )</li>
+                    	<li>display loading screen with a progress bar</li>
+                    </ul>
+                    <li>handles some DOM manipulation related to marginal notes: <code>&lt;bb-note&gt;</code></li>
+
+                </ul>
+            </bb-p>
+
+            <bb-h2 id="library">Using the Library</bb-h2>
+
+            <bb-h3>the library files</bb-h3>
+
+            <bb-p>
+                <img src="diagram.jpg" alt="assuming index.html is making use of the BBElements">
+                This documentation page is an example of a website using the BBElements library. The library consists of the BBElements.js file and it's dependencies folder ( BBElementsFiles ). You can find these <a href="https://github.com/brangerbriz/BBElements/tree/master/build/js" target="_blank">files here</a>.
+                <br><br>
+                Both the js file and the dependencies folder must be kept inside a js/ folder kept along side the HTML file making use of the library.
+            </bb-p>
+
+			<bb-h3>load the library</bb-h3>
+
+			<bb-p>
+				In order to avoid <a href="https://en.wikipedia.org/wiki/Flash_of_unstyled_content" target="_blank">FOUC</a> include the library in the <code>&lt;head&gt;</code> of your HTML page:
+			</bb-p>
+
+			<bb-code language="html">
+&lt;script src="js/BBElements.js"&gt;&lt;/script&gt;
+			</bb-code>
+
+			<bb-p>
+				then right below that ( still in the <code>&lt;head&gt;</code> ) inside an empty pair of <code>&lt;script&gt;</code> tags you can choose one of two ways for loading the custom BB elements. The first method is to <b>"lazy-load"</b> the individual elements:
+			</bb-p>
+
+			<bb-code>
+// load every BBElement by default
+BBElements.lazyLoad();
+
+// or you can specify which BBElements you want to load
+// by passing in an array of the desired elements
+BBElements.lazyLoad(['bb-logo','bb-h1','bb-p']);
+			</bb-code>
+
+			<bb-p>
+				The alternative method ( rather than lazy-loading the individual elements which in turn creates individual HTML imports for each element ) is to <b>import</b> a vulcanized<bb-note info='in order to reduce the number of network requests caused by importing one element at a time, a <a href="https://www.polymer-project.org/1.0/docs/tools/optimize-for-production#use-vulcanize-from-the-command-line" target="_blank">vulcanized</a> file is a single file with all the BBelements in it.'></bb-note> file created with <code>npm run vulcanize</code> ( see <a href="#development">dev section</a> below for more details ) like this:
+			</bb-p>
+
+			<bb-code>
+// this is the default path to the vulcanized file with all the BBElements
+// but you could instead use a path to a custom made vulcanized file
+BBElements.import('js/BBElementsFiles/vulcanized-elements.html');
+			</bb-code>
+
+			<bb-h3>optional methods</bb-h3>
+
+			<bb-p>
+				The page renders before the custom elements are fully loaded ( which creates a <a href="https://en.wikipedia.org/wiki/Flash_of_unstyled_content" target="_blank">FOUC</a><i>-ish</i> messyness, as described <a href="https://aerotwist.com/blog/polymer-for-the-performance-obsessed/#the-performance-problem" target="_blank">here</a> ). There are a couple of optional methods for handling this. The first is to load a temporary style sheet ( which approximates what the custom elements should look like once fully loaded ) which is later removed once the custom elements have fully loaded. To use this add the following below the call to <code>.lazyLoad()</code> or <code>.import()</code> inside the same script tag:
+			</bb-p>
+
+			<bb-code>
+BBElements.usePlaceholderCSS();
+			</bb-code>
+
+			<bb-p>
+				Alternatively, you could also use a loading screen ( with a progress bar ) which fades out once all the custom elements have fully loaded. To use this create a new pair of <code>&lt;script&gt;</code> tags at the top<bb-note info="this script tag calls document.body so it needs to be in the body and not the head. it should be the first thing in your body so that it displays the load screen before all other elements"></bb-note> of your <code>&lt;body&gt;</code> tag with the code below.
+			</bb-p>
+
+			<bb-code>
+BBElements.useLoadingScreen();
+			</bb-code>
+
+			<br><br><br>
+
+			<bb-h2 id="elements">Using the Elements</bb-h2>
+
+			<bb-p>
+				With the library loaded in the head along with a call to either <code>.lazyLoad()</code> or <code>.import()</code> you can then use any of the loaded BBElements in your html document just like you would any standard element. You can view <a href="example.html">this example page</a> as a demo of all the elements in use ( except for <code>&lt;bb-post-summary&gt;</code>, you can find a demo of a <a href="example-list.html">bb-post-summary here</a> ). Below is documentation of the BBElements included in the library.
+			</bb-p>
+
+			<bb-code language="html" wrap>
+&lt;bb-container&gt;
+
+	&lt;bb-logo&gt;&lt;/bb-logo&gt;
+
+	&lt;bb-h1&gt; New Code Demo &lt;/bb-h1&gt;
+
+	&lt;bb-p&gt;
+		some information here
+	&lt;/bb-p&gt;
+
+	&lt;bb-code language="html" wrap&gt;
+		some code here
+	&lt;/bb-code&gt;
+
+	&lt;bb-footer back-text="Back to Main Page" back-url="/index.html"&gt;
+	&lt;/bb-footer&gt;
+
+&lt;/bb-container&gt;
+			</bb-code>
+
+			<br><br>
+			<bb-div id="elements-doc">
+				<!-- <bb-row>
+					<bb-cell><b>bb-code</b></bb-cell>
+					<bb-cell><code>&lt;bb-code&gt;&lt;/bb-code&gt;</code></bb-cell>
+				</bb-row>
+				<bb-p>
+					for displaying large blocks of code.
+				</bb-p>
+				<bb-row class="attr-info">
+					<bb-cell>attributes</bb-cell>
+					<bb-cell>type</bb-cell>
+					<bb-cell>default value</bb-cell>
+					<bb-cell>info</bb-cell>
+				</bb-row>
+				<bb-row noborder>
+					<bb-cell>language</bb-cell>
+					<bb-cell><i>String</i></bb-cell>
+					<bb-cell>javascript</bb-cell>
+					<bb-cell>the programming language being written inside the element</bb-cell>
+				</bb-row> -->
+			</bb-div>
+			<br><br><br><br>
+
+			<bb-h2 id="development">Development Notes</bb-h2>
+
+			<bb-p>
+				Clone the repo <code>git clone https://github.com/brangerbriz/BBElements.git</code>.
+				Then make sure to <code>npm install</code> as well as <code>bower install</code> ( assuming you have npm and bower installed locally ). The package.json includes a few npm scripts ( which must be run from the root of the project ) detailed below.
+			</bb-p>
+
+			<bb-p>
+				The source code is found in the <b>src</b> folder. All the BBElements are in <b>src/elements</b>, the main library file is <b>src/BBElements.js</b> and it's dependencies are in <b>src/js</b>. Inside <b>src/utils</b> are a few dev utility scripts. There is an npm script to lint the srouce code:
+			</bb-p>
+			<bb-code language="bash">
+npm run lint
+			</bb-code>
+
+			<bb-p>
+				The <b>docs</b> directory contains a .json document file per BBElement. This documentation page uses the data in those .json files to generate parts of this page. The .json files are auto-generated by <b>docs/make.js</b> which can be run with the following npm script:
+			</bb-p>
+			<bb-code language="bash">
+npm run docs
+			</bb-code>
+
+			<bb-p>
+				<b>src/utils/Vulcanize.js</b> is used to to create a vulcanized file <b>src/utils/vulcanized-elements.html</b>, which is a single HTML import file for loading BBElements via <code>.import('path/to/vulcanized-elements.html')</code> rather than lazy-loading individual files for each BBElement via <code>.lazyLoad()</code>. There is an npm script for creating a the vulcanized-elements.html file.
+			</bb-p>
+			<bb-code language="bash">
+npm run vulcanize
+
+# you can also specify which elements to include in the vulcanized file
+npm run vulcanize bb-p bb-h1 bb-h2
+			</bb-code>
+
+			<bb-p>
+				The build folder includes this documentaiton page, a few example files and a <b>build/js</b> folder, which is where the built library and it's dependencies are placed. There is an npm script used to build the library ( as well as collect all the libraries dependencies and copy them into build/js/BBElementsFiles ). The build process also lints and creates docs as well as creates a vulcanized file with all the elements in it by default.
+			</bb-p>
+			<bb-code language="bash">
+npm run build
+			</bb-code>
+
+			<bb-p>
+				to watch changes to src/*.js
+			</bb-p>
+			<bb-code language="bash">
+npm run watch
+			</bb-code>
+
+
+			<br><br><br>
+
+        </bb-container>
+
+		<script>
+
+			Object.size = function(obj) {
+				var size = 0, key;
+				for (key in obj) {
+					if (obj.hasOwnProperty(key)) size++;
+				}
+				return size;
+			}; // via: http://stackoverflow.com/a/6700/1104148
+
+			function nE(ele){
+				var ele = document.createElement(ele);
+				return ele;
+			}
+			function nRow(noborder,css,id){
+				var row = nE('bb-row');
+				if( noborder ) row.setAttribute('noborder',true);
+				if(css) row.className = css;
+				if(id) row.id = id;
+				return row;
+			}
+			function nP(txt){
+				var p = nE('bb-p');
+				if(txt) p.textContent = txt;
+				return p;
+			}
+			function nCell(txt,subEle){
+				var cell = nE('bb-cell');
+				var sub;
+				switch(subEle){
+					case 'code': sub = nE('code'); break;
+					case 'i': sub = nE('i'); break;
+					case 'b': sub = nE('b'); break;
+					default: sub = nE('span'); break;
+				}
+				sub.textContent = txt;
+				cell.appendChild( sub );
+				return cell;
+			}
+
+			function attrRow( key, obj ){
+				var row = nRow(true);
+				var c1 = nCell(key);
+				var c2 = nCell(obj.type,'i');
+				var c3 = nCell(obj.value);
+				var c4 = nCell(obj.info);
+				row.appendChild(c1);
+				row.appendChild(c2);
+				row.appendChild(c3);
+				row.appendChild(c4);
+				return row;
+			}
+
+			function appendDoc( ele, parent ){
+				var req = new XMLHttpRequest();
+				req.open("GET", '../docs/'+ele+".json", true);
+				req.addEventListener("load", function() {
+					var atRow, arow;
+					var doc = JSON.parse(req.responseText);
+					// first row ( the element )
+					var titleRow = nRow(false,'ele-doc',doc.name);
+					var trC1 = nCell(doc.name,'b');
+					var trC2 = nCell(doc.element,'code');
+					titleRow.appendChild( trC1 );
+					titleRow.appendChild( trC2 );
+					parent.appendChild( titleRow );
+					// second row ( the info )
+					var infoRow = nP(doc.description);
+					parent.appendChild( infoRow );
+					if( Object.size(doc.attributes)>0 ){
+						// third row (attr key)
+						atRow = nRow(false,'attr-info');
+						atRow.appendChild( nCell('attributes') );
+						atRow.appendChild( nCell('type') );
+						atRow.appendChild( nCell('default value') );
+						atRow.appendChild( nCell('info') );
+						parent.appendChild( atRow );
+						// all the attribute rows
+						for (var key in doc.attributes) {
+							if (doc.attributes.hasOwnProperty(key)) {
+								arow = attrRow(key,doc.attributes[key]);
+								parent.appendChild( arow );
+							}
+						}
+					}
+					parent.appendChild( nE('br') );
+					parent.appendChild( nE('br') );
+					parent.appendChild( nE('br') );
+					parent.appendChild( nE('br') );
+				});
+				req.send(null);
+			}
+
+			// ============================ get list && create documentation elements
+
+			var list = [];
+			var docEle = document.querySelector('#elements-doc');
+			var subEleMen = document.querySelector('#sub-ele-menu');
+
+			for (var i = 1; i < BBElements.list.length; i++) {
+				var start = BBElements.list[i].indexOf('bb-');
+				var end = BBElements.list[i].indexOf('.html');
+				var ele = BBElements.list[i].substr( start, end-start );
+				list.push( ele );
+			}
+
+			for (var i = 0; i < list.length; i++) {
+				appendDoc( list[i], docEle );
+				// populate sub-ele-menu list
+				var a = nE('a');
+				a.textContent = list[i];
+				a.setAttribute('href','#'+list[i]);
+				subEleMen.appendChild(a);
+			}
+
+			var changeBorderColor = setInterval(function(){
+				var eles = document.querySelectorAll('.ele-doc');
+				var fixBug = document.querySelectorAll('.attr-info');
+				if( eles.length == list.length ){
+					for (var i = 0; i < fixBug.length; i++) {
+						fixBug[i].style.borderColor = "#c4c4c4";
+					}
+				} else {
+					clearInterval( changeBorderColor );
+				}
+			},100);
+
+			// ============================ menu logix
+
+			var menu = document.querySelector('#menu');
+			var subMA = document.querySelectorAll('#menu a');
+			var subM = document.querySelector('#sub-ele-menu');
+			var introTxt = document.querySelector('#introTxt');
+			var menuTop = introTxt.offsetTop+60;
+			menu.style.top = menuTop+"px";
+
+			function setupMenu(pageY){
+				var y = (typeof pageY=="undefined") ? pageYOffset : pageY;
+				var eleTop = document.querySelector('#elements').offsetTop;
+				var devTop = document.querySelector('#development').offsetTop;
+
+				if( y<eleTop || innerWidth<=990 || y>devTop-30)
+					subM.style.display = "none";
+				else subM.style.display = "block";
+
+				if(innerWidth>990){
+					if( y < menuTop-20 ){
+						menu.style.top = menuTop+"px";
+						menu.style.position = "absolute";
+					} else {
+						menu.style.top = "20px";
+						menu.style.position = "fixed";
+					}
+					menu.style.left = innerWidth/2 - introTxt.offsetWidth/2 - menu.offsetWidth - 50 + "px";
+					for (var i = 0; i < subMA.length; i++)
+						subMA[i].style.display = "block";
+				} else {
+					menu.style.position = "fixed";
+					menu.style.top = "0px";
+					menu.style.left = "0px";
+					for (var i = 0; i < subMA.length; i++)
+						subMA[i].style.display = "inline-block";
+				}
+			}
+			window.addEventListener('load',function(){setupMenu();});
+			window.addEventListener('resize',function(){setupMenu();});
+
+			document.addEventListener('scroll',function(e){
+				var y = window.pageYOffset;
+				setupMenu(y);
+			});
+
+
+
+
+		</script>
+
+    </body>
+</html>

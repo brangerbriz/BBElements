@@ -7,16 +7,16 @@
 		responsive container for other bb elements
 
 	@element
-		<bb-container></bb-container> 
-	
+		<bb-container></bb-container>
+
 	@attributes
 		{}
-	
+
 -->
 	<template>
 
-		<style>			
-			
+		<style>
+
 			/* default styles 					*/
 			/* for anything greater than 1280px */
 
@@ -24,7 +24,7 @@
 				display: block;
 				width:100%;
 				margin: 32px auto;
-				box-sizing: border-box;				
+				box-sizing: border-box;
 			}
 
 			:host:before, :host:after{
@@ -33,25 +33,26 @@
 
 			:host ::content ::-moz-selection { background: #e40477; color:#fff; }
 			:host ::content ::selection { background: #e40477; color:#fff; }
-			
+
 			:host ::content > bb-h1,
 			:host ::content > bb-h2,
 			:host ::content > bb-h3,
-			:host ::content > bb-p,	
-			:host ::content > bb-div,			
+			:host ::content > bb-p,
+			:host ::content > bb-div,
 			:host ::content > bb-row,
 			:host ::content > bb-tags,
 			:host ::content > bb-quote,
+			:host ::content > bb-code code,
 			:host ::content > bb-footer {
 				width:100%;
 				margin-left:auto;
 				margin-right:auto;
 				max-width: 580px
 			}
-			
+
 			:host ::content > bb-media { left:-76px; }
 			:host ::content > bb-media[fullwidth] { left:0px; }
-			
+
 			:host ::content > bb-media #caption {
 				max-width: 580px
 			}
@@ -69,13 +70,14 @@
 				left: -15px;
 			}
 
-			
+
 			/* if less than 1280px ~ * ~ * ~ * ~ * ~ * ~ * ~ * ~ * ~ */
 			/* ~ * ~ * ~ * ~ * ~ * ~ * ~ * ~ * ~ * ~ * ~ * ~ * ~ * ~ */
 			@media (max-width: 1280px) {
-				
+
 				:host ::content > bb-h3,
-				:host ::content > bb-p { max-width:470px;  }
+				:host ::content > bb-p,
+				:host ::content > bb-code code { max-width:470px;  }
 				:host ::content > bb-div { max-width:470px;  }
 
 				:host ::content > bb-p img {
@@ -113,10 +115,11 @@
 				:host ::content > bb-h2,
 				:host ::content > bb-h3,
 				:host ::content > bb-row,
-				:host ::content > bb-tags,	
+				:host ::content > bb-tags,
 				:host ::content > bb-footer,
-				:host ::content > bb-quote,			
-				:host ::content > bb-p { max-width:530px;  }
+				:host ::content > bb-quote,
+				:host ::content > bb-p,
+				:host ::content > bb-code code { max-width:530px;  }
 				:host ::content > bb-div { max-width:530px;  }
 
 				:host ::content > bb-media { max-width: 710px; }
@@ -143,9 +146,10 @@
 				:host ::content > bb-h2,
 				:host ::content > bb-h3,
 				:host ::content > bb-row,
-				:host ::content > bb-tags,	
-				:host ::content > bb-footer,	
-				:host ::content > bb-p { max-width:90%;  }
+				:host ::content > bb-tags,
+				:host ::content > bb-footer,
+				:host ::content > bb-p,
+				:host ::content > bb-code code { max-width:90%;  }
 				:host ::content > bb-div { max-width:90%;  }
 
 				:host ::content > bb-h1 { font-size: 50px; }
@@ -175,17 +179,17 @@
 				}
 
 			}
-			
+
 
 
 		</style>
 
 		<content></content>
-	
+
 	</template>
 	<script>
 		Polymer({
-			is:"bb-container",				
+			is:"bb-container",
 
 			positionLogo: function(){
 				var logo = this.children[0];
@@ -199,20 +203,20 @@
 				} else {
 					//  window/2       max-width/2   bb-logo ( 0.33 to adjust the B )
 					l = innerWidth/2 - 290 - 		logo.offsetWidth*0.33;
-				}	
-				logo.style.marginLeft = l+"px";				
+				}
+				logo.style.marginLeft = l+"px";
 			},
 
 			repositionMarginalNote: function( note, spot ){
 				var temp = note;
 				var parent = note.parentNode;
 				note.parentNode.removeChild( note );
-				if( spot == "bottom"){										
+				if( spot == "bottom"){
 					parent.appendChild( temp );
 				} else {
-					parent.insertBefore( temp, parent.childNodes[0] );	
+					parent.insertBefore( temp, parent.childNodes[0] );
 				}
-				
+
 			},
 
 			resizeMarginalNotes: function( note ){
@@ -230,7 +234,7 @@
 					mr = -99+"px";
 					mt = "0px";
 					p = "0 0 20px 20px";
-					this.repositionMarginalNote( note, "top" );					
+					this.repositionMarginalNote( note, "top" );
 				} else if( innerWidth < 1280 ){
 					f = "right";
 					w = 222+'px';
@@ -245,7 +249,7 @@
 					mt = "0px";
 					p = "0 0 20px 20px";
 					this.repositionMarginalNote( note, "top" );
-				}	
+				}
 				note.style.width = w;
 				note.style.marginRight = mr;
 				note.style.marginTop = mt;
@@ -265,18 +269,18 @@
 					} else {
 						media.updateWidth( 754, 'px' );
 					}
-			
+
 				}
 
 				if( media.getAttribute('fullwidth')==null){
 					if( innerWidth < 767 ){
-						for (var i = 0; i < media.children.length; i++) 
-							if( media.children[i].id=="caption" ) 
+						for (var i = 0; i < media.children.length; i++)
+							if( media.children[i].id=="caption" )
 								media.children[i].style.marginLeft="-76px";
-						
+
 					} else {
-						for (var i = 0; i < media.children.length; i++) 
-							if( media.children[i].id=="caption" ) 
+						for (var i = 0; i < media.children.length; i++)
+							if( media.children[i].id=="caption" )
 								media.children[i].style.marginLeft="0px";
 					}
 				}
@@ -289,21 +293,21 @@
 					this.positionLogo();
 				}
 
-				// resize marginal notes				
-				var notes = document.querySelectorAll('bb-p > aside'); 
+				// resize marginal notes
+				var notes = document.querySelectorAll('bb-p > aside');
 				for (var i = 0; i < notes.length; i++) {
 					this.resizeMarginalNotes( notes[i] );
 				}
 
 				// resize media elements
-				var medias = document.querySelectorAll('bb-media'); 
+				var medias = document.querySelectorAll('bb-media');
 				for (var i = 0; i < medias.length; i++) {
 					this.resizeMedias( medias[i] );
 				}
 
 			},
 
-			created: function(){	
+			created: function(){
 				// window.addEventListener('resize',()=>{this.resize()});
 				var self = this;
 				window.addEventListener('resize',function(){

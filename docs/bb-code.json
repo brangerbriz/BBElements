@@ -1,0 +1,1 @@
+{"name":"bb-code","description":"for displaying large blocks of demo code with syntax highlighting","element":"<bb-code></bb-code>","attributes":{"language":{"type":"String","value":"javascript","info":"the programming language being written inside the element"},"wrap":{"type":"Boolean","value":"false","info":"whether to wrap the overflow-x or not"}}}

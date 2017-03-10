@@ -7,13 +7,13 @@
 		general media container/wrapper for a single media element ( ex: img, video, audio, iframe )
 
 	@element
-		<bb-media></bb-media> 
-	
+		<bb-media></bb-media>
+
 	@attributes
 		{
-			"fullwidth": { 
+			"fullwidth": {
 				"type": "Boolean",
-				"value": "false", 
+				"value": "false",
 				"info": "makes this a full width media element"
 			},
 			"caption": {
@@ -22,11 +22,11 @@
 				"info": "optional caption which appears below the media element"
 			}
 	}
-	
+
 -->
 	<template>
 
-		<style>			
+		<style>
 
 			:host {
 				--width: 752px;
@@ -48,7 +48,7 @@
 			}
 
 			:host ::content audio {
-			
+
 			}
 
 			:host ::content iframe {
@@ -62,7 +62,7 @@
 				/*color:#c4c4c4;*/
 				color:#A7A8A7;
 				width: 100%;
-				margin: 0 auto;	
+				margin: 0 auto;
 				position: relative;
 				top:3px;
 				left: var(--left-cap);
@@ -73,18 +73,18 @@
 		</style>
 
 		<content></content>
-		<div id="caption"></div>	
-	
+		<div id="caption"></div>
+
 	</template>
 	<script>
 		Polymer({
-			is:"bb-media",	
+			is:"bb-media",
 			properties: {
 
-				fullwidth: { 
+				fullwidth: {
 					type: Boolean,
-					value: false, 
-					reflectToAttribute: true, 
+					value: false,
+					reflectToAttribute: true,
 					observer: 'fullWidth'
 				},
 				caption: {
@@ -94,8 +94,8 @@
 					observer: 'changeCaption'
 				}
 
-			},	
-			
+			},
+
 			maxWidth: { value:754, unit:'px' },
 			fullwidth: true,
 			initResize: false,
@@ -115,10 +115,10 @@
 				if( newVal ){
 					this.fullwidth = true;
 					this.customStyle['--width'] = "100%";
-					this.customStyle['--left-cap'] = "0px";					
+					this.customStyle['--left-cap'] = "0px";
 				} else {
 					this.fullwidth = false;
-					this.customStyle['--width'] = this.maxWidth.value+this.maxWidth.unit; 
+					this.customStyle['--width'] = this.maxWidth.value+this.maxWidth.unit;
 					this.customStyle['--left-cap'] = "76px";
 					// if in a bb-container, trigger resize once ( after bb-media is loaded )
 					// fixes the fact that bb-container's resize launches b4 bb-media is ready
