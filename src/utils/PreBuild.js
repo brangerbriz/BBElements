@@ -26,6 +26,11 @@ rmdir('build/js/BBElementsFiles', function(err){
 			else console.log('Elements Copied to Build');
 		});
 
+		ncp('src/highlightJS/', 'build/js/BBElementsFiles/highlightJS', function (err) {
+			if (err) console.error(err);
+			else console.log('highlightJS Copied to Build');
+		});
+
 		ncp('src/utils/vulcanized-elements.html', 'build/js/BBElementsFiles/vulcanized-elements.html', function (err) {
 			if (err) console.error(err);
 			else console.log('vulcanized-elements.html Copied to Build');
