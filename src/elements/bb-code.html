@@ -4,13 +4,23 @@
 		bb-code
 
 	@description
-		for displaying large blocks of code
+		for displaying large blocks of demo code with syntax highlighting
 
 	@element
 		<bb-code></bb-code>
 
-	@attributes
-		{}
+	@attributes {
+		"language": {
+			"type": "String",
+			"value": "javascript",
+			"info": "the programming language being written inside the element"
+		},
+		"wrap":{
+			"type": "Boolean",
+			"value": "false",
+			"info": "whether to wrap the overflow-x or not"
+		}
+	}
 
 -->
 	<template>
@@ -39,6 +49,7 @@
 			::content .hljs {
 				display: block;
 				overflow-x: auto;
+				/*white-space: pre-wrap;*/
 				padding: 0.5em;
 				/*background: #F0F0F0;*/
 			}
@@ -54,7 +65,7 @@
 			::content .hljs-selector-tag,
 			::content .hljs-meta-keyword,
 			::content .hljs-doctag,
-			::content .hljs-name { font-weight: bold; }
+			::content .hljs-name {}
 
 			/* User color: hue: 0 */
 
@@ -68,10 +79,12 @@
 
 			::content .hljs-number { color:#731AC1; }
 
-			::content .hljs-function > ::content .hljs-keyword { color: #E20177; }
+			::content .hljs-function > ::content .hljs-keyword,
+			::content .hljs-name { color: #E20177; }
 			::content .hljs-keyword { color: #1D81A0; }
 
 			::content .hljs-title,
+			::content .hljs-attr,
 			::content .hljs-section { color: #209951; }
 
 			::content .hljs-regexp,
@@ -102,11 +115,7 @@
 
 		</style>
 
-		<pre class="bg">
-			<code class="js">
-				<content></content>
-			</code>
-		</pre>
+<pre class="bg"><code class="js"><content></content></code></pre>
 
 	</template>
 	<script>
@@ -114,12 +123,37 @@
 		Polymer({
 			is:"bb-code",
 
+			properties: {
+				"language": {
+					type: String,
+					value: 'javascript',
+					reflectToAttribute: true,
+					observer: 'changeLanguage'
+				},
+				"wrap":{
+					type: Boolean,
+					value: false,
+					reflectToAttribute: true,
+					observer: 'changeWrap'
+				}
+			},
+
+			changeLanguage: function(newVal,oldVal){
+				if( newVal==="" ) newVal="js";
+				this.$$('code').className = newVal;
+			},
+
+			changeWrap: function(newVal,oldVal){
+				if(newVal)
+					this.$$('code').style.whiteSpace ="pre-wrap";
+			},
+
 			highlightBlock: function(){
 				var self = this;
 				if(typeof hljs === "undefined" ){
 					setTimeout(function(){ self.highlightBlock() },100);
 				} else {
-					hljs.highlightBlock(this.$$('.js'));
+					hljs.highlightBlock(this.$$('code'));
 				}
 			},
 
@@ -136,7 +170,7 @@
 					hjs.src = 'js/BBElementsFiles/highlightJS/highlight.pack.js';
 					document.head.appendChild(hjs);
 					hjs.onload = function(){
-						hljs.highlightBlock(self.$$('.js'));
+						hljs.highlightBlock(self.$$('code'));
 					}
 				} else {
 					this.highlightBlock();
