@@ -1,3 +1,5 @@
+## this is v1 of BBElements which used polymer, this is outdated as of July 2018 
+
 # BBElements.js
 
 is a front-end JavaScript library for using custom HTML elements that conform to the Branger_Briz brand. The library uses the [webcomponents polyfill](https://github.com/webcomponents/webcomponentsjs) as well as the [Polymer library](https://www.polymer-project.org/1.0/) for creating the actual custom elements. The BBElements library itself handles the following:
