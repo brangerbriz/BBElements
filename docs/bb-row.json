@@ -1,1 +1,0 @@
-{"name":"bb-row","description":"an info/data row, should contain <bb-cell> elements","element":"<bb-row></bb-row> ","attributes":{"noborder":{"type":"Boolean","value":"false","info":"removes the default bottom-border"}}}

@@ -1,1 +1,0 @@
-{"name":"bb-footer","description":"footer element for blog posts and portfolio items","element":"<bb-footer></bb-footer> ","attributes":{"back-text":{"type":"String","value":"none","info":"the back text/copy, ex: Back to all Projects"},"back-url":{"type":"String","value":"none","info":"the url to where this should link back to"}}}

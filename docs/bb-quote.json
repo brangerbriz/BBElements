@@ -1,1 +1,0 @@
-{"name":"bb-quote","description":"pull quote element ","element":"<bb-quote></bb-quote> ","attributes":{"credit":{"type":"String","value":"none","info":"optional credit line that will appear below the quote"}}}

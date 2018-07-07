@@ -1,1 +1,0 @@
-{"name":"bb-cell","description":"an info/data cell, used inside of <bb-row>","element":"<bb-cell></bb-cell> ","attributes":{"scale":{"type":"Number","value":"1","info":"scale the size of the cell proportionally to it's sibling cells, ex: scale=\"2\" would be twice as big as the other cells in that <bb-row>"}}}
