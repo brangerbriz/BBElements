@@ -14,6 +14,21 @@
 */
 window.addEventListener('load',()=>{
 
+    /* * * * * * * * * * * * * * * * * UTILS * * * * * * * * * * * * * * * *  */
+    /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *  */
+
+    function isUsingCSSFile(filename){
+        let isUsing = false
+        let cssFiles = document.querySelectorAll('link')
+        for (let i = 0; i < cssFiles.length; i++) {
+            if(cssFiles[i].getAttribute('href').indexOf(filename) >= 0){
+                isUsing = true
+                break
+            }
+        }
+        return isUsing
+    }
+
     function mkLink(txt,url){
         let a = document.createElement('a')
             a.textContent = txt
@@ -133,6 +148,28 @@ window.addEventListener('load',()=>{
         let nfo = notes[i].getAttribute('data-info')
         aTop.appendChild( makeNote(i+1,nfo) )
         aBottom.appendChild( makeNote(i+1,nfo) )
+    }
+
+    /*
+        syntax highlight with highlightJS
+        IF we're using the bb-code-colors.css
+    */
+    if(isUsingCSSFile('bb-code-colors')){
+        if(typeof hljs !== "object"){
+            throw new Error('BBElements: using bb-code-colors.css '+
+            'requires that you also include highlight.js '+
+            'before the inclusion of BBElements.js')
+        } else {
+            let codes = document.querySelectorAll('pre.code > code')
+            for (let i = 0; i < codes.length; i++) {
+                // word wrap any code elemnts that require it
+                if(codes[i].getAttribute('data-wrap')=="true"){
+                    codes[i].style.whiteSpace ="pre-wrap"
+                }
+                // color code 'em
+                hljs.highlightBlock(codes[i])
+            }
+        }
     }
 
 
@@ -319,18 +356,12 @@ window.addEventListener('load',()=>{
         }
     }
 
-    let usingResponsiveCSS = false
-    let cssFiles = document.querySelectorAll('link')
-    for (let i = 0; i < cssFiles.length; i++) {
-        if(cssFiles[i].getAttribute('href').indexOf('bb-responsive') >= 0){
-            usingResponsiveCSS = true
-            break
-        }
-    }
-
-    if(usingResponsiveCSS){
+    if(isUsingCSSFile('bb-responsive')){
         positionLogo()
         window.addEventListener('resize',positionLogo)
+    } else {
+        console.warn('BBElements: consider using bb-responsive.css '+
+        'for media-queries that conform to the BB Style Guide')
     }
 
 

@@ -47,7 +47,8 @@
         <!-- CSS -->
         <!-- consider including normalize.css -->
         <link rel="stylesheet" href="css/bb-styles.css">
-        <link rel="stylesheet" href="css/bb-responsive.css">
+        <link rel="stylesheet" href="css/bb-responsive.css"><!-- optional media-queries -->
+        <link rel="stylesheet" href="css/bb-code-colors.css"><!-- optional syntax highlighting -->
 
     </head>
     <body>
@@ -122,8 +123,24 @@
         <br><br>
 
         <p>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corporis earum repellendus ut consectetur maxime iusto alias doloribus, provident soluta sit! Impedit amet, distinctio sit sint perspiciatis architecto culpa odit nulla, nostrum reiciendis modi rerum quae vero mollitia magnam obcaecati ea tenetur voluptatum necessitatibus quos nesciunt quod nam voluptatibus! Adipisci dolores magni optio<span class="marginal-note" data-info="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod laborum, enim necessitatibus dolorum id, soluta recusandae sit illo reiciendis blanditiis assumenda delectus aspernatur ratione eum, adipisci tempore nobis alias? Sed!"></span> accusamus aliquam autem velit tenetur eos facere omnis nihil dolor ullam, fugit quo consequuntur numquam in culpa ut sed voluptate! Quidem quibusdam nesciunt neque nostrum iste, doloribus, eos ipsa esse modi non dolores veritatis, ullam tempora incidunt fugiat reiciendis. Quam minus facilis autem porro, eum, obcaecati earum ea quod dolorum sit doloremque at labore, id rerum <span class="marginal-note" data-info="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quasi a alias adipisci molestias odit totam beatae maiores magni perferendis odio minus laborum dolore saepe voluptas non laudantium quaerat harum ut officiis, ex assumenda. Obcaecati a provident aliquid rerum magni, nesciunt aperiam ullam, corrupti quas libero officia ratione ab, nihil repellat."></span> quos odio quia assumenda aspernatur sapiente quibusdam cumque voluptas quas impedit et! Et sunt sapiente odit sequi aliquid ex laborum nam, eligendi fugit alias magnam iste vero itaque perferendis magni tenetur neque nobis illo, esse minus necessitatibus qui soluta? Harum asperiores nostrum fugiat nemo praesentium ea, aliquam aut quis cupiditate voluptatem cum tempora unde nisi suscipit assumenda eligendi nam consequuntur vitae debitis mollitia at blanditiis magnam iste sit? Sapiente, culpa quis pariatur.
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corporis earum repellendus ut consectetur maxime iusto alias doloribus, provident soluta sit! Impedit amet, distinctio sit sint perspiciatis architecto culpa odit nulla, nostrum reiciendis modi rerum quae vero mollitia magnam obcaecati ea tenetur voluptatum necessitatibus quos nesciunt quod nam voluptatibus! Adipisci dolores magni optio<span class="marginal-note" data-info="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod laborum, enim necessitatibus dolorum id, soluta recusandae sit illo reiciendis blanditiis assumenda delectus aspernatur ratione eum, adipisci tempore nobis alias? Sed!"></span> accusamus aliquam autem velit tenetur eos facere omnis nihil dolor ullam, fugit quo consequuntur numquam in culpa ut sed voluptate! Quidem quibusdam nesciunt neque nostrum iste, doloribus, eos ipsa esse modi non dolores veritatis, ullam tempora incidunt fugiat reiciendis. Quam minus facilis autem porro, eum, obcaecati earum ea quod dolorum sit doloremque at labore, id rerum <span class="marginal-note" data-info="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quasi a alias adipisci molestias odit totam beatae maiores magni perferendis odio minus laborum dolore saepe voluptas non laudantium quaerat harum ut officiis, ex assumenda. Obcaecati a provident aliquid rerum magni, nesciunt aperiam ullam, corrupti quas libero officia ratione ab, nihil repellat."></span> quos odio quia assumenda aspernatur sapiente quibusdam cumque voluptas quas impedit et! Et sunt sapiente odit sequi aliquid ex laborum nam, eligendi fugit alias magnam iste vero itaque perferendis magni tenetur neque nobis illo, esse minus necessitatibus qui soluta? Harum asperiores nostrum fugiat nemo <code>praesentium()</code> ea, aliquam aut quis cupiditate voluptatem cum tempora unde nisi suscipit assumenda eligendi nam consequuntur vitae debitis mollitia at <code>blanditiis()</code> magnam iste sit? Sapiente, culpa quis pariatur.
         </p>
+
+<pre class="code">
+<code class="js" data-wrap="true">
+var x = 100;
+var y = 100;
+
+// Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sit itaque nobis nesciunt? Eligendi porro nesciunt in, molestias maxime, non eum! Quisquam a voluptates hic natus incidunt, facilis dicta est nisi.
+
+for(var i=0; i&lt;100; i++){
+
+    z = Math.random() * 100;
+    drawStuff(x,y,z);
+
+}
+</code>
+</pre>
 
         <p>
             <img src='https://upload.wikimedia.org/wikipedia/commons/thumb/b/b4/Claude_Lorrain_014.jpg/800px-Claude_Lorrain_014.jpg'>
@@ -141,6 +158,7 @@
             <a href="#">Digital Community</a>
         </span>
 
+        <script src="js/highlightJS/highlight.pack.js"></script><!-- optional syntax highlighting -->
         <script src="js/BBElements.js"></script>
         <script>
             (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
