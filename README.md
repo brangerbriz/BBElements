@@ -38,40 +38,6 @@ You can include an SVG of the BB logo with the code below. It has a few optional
 <h3> small pink titles </h3>
 ```
 
-### block quotes
-For large pull quotes (ie. outside of `<p>` or `<div>` elements) include them inside a `span.quote` element. They take an optional `data-credit` attribute which will appear in lighter font below the quote. These can include links written in markdown syntax.
-```html
-<span class="quote" data-credit="Dr. Ipsum [publication](https://website.org)">
-    This is something someone said
-</span>
-```
-
-### code snippets
-For large code examples (ie. outside of `<p>` or `<div>` elements) include them inside a `code` element within a `pre.code` element. You can optionally word wrap the code by setting the `data-wrap` attribute to "true". If you are optionally using `bb-code-colors.css` and  [`highlight.js`](https://highlightjs.org/) for syntax highlighting (see usage notes above) then you can also specify what language the code snippet is in by specifying it in the `code` element's `class` attribute.
-```html
-<pre class="code">
-    <code class="js" data-wrap="true">
-        var x = 100;
-        var y = 100;
-
-        for(var i=0; i&lt;100; i++){
-
-            z = Math.random() * 100;
-            drawStuff(x,y,z);
-
-        }
-    </code>
-</pre>
-```
-
-### media elements
-To format large media elements properly (ie. outside of `<p>` or `<div>` elements), include them inside a `section.media` element. These take an optional `data-fullwidth` property. Inside media elements you can include `<img>` elements. If the element has an `alt` attribute, the value of the attribute will be used as the caption for the media element. These captions can also include links written in markdown syntax.
-```html
-<section class="media" data-fullwidth="true">
-    <img src="image.jpg" alt="picture of a [cool](http://cool.com) cat">
-</section>
-```
-
 ### divs and paragraphs
 Both `p` and `div` tags conform to the basic copy style of the BB brand.
 ```html
@@ -104,6 +70,41 @@ To include marginal notes simply add a `span.marginal-note` element inside of a 
      create an aside with the info in the data-info attribute. You can create
      using markdown syntax as seen above.
 </p>
+```
+
+
+### block quotes
+For large pull quotes (ie. outside of `<p>` or `<div>` elements) include them inside a `span.quote` element. They take an optional `data-credit` attribute which will appear in lighter font below the quote. These can include links written in markdown syntax.
+```html
+<span class="quote" data-credit="Dr. Ipsum [publication](https://website.org)">
+    This is something someone said
+</span>
+```
+
+### media elements
+To format large media elements properly (ie. outside of `<p>` or `<div>` elements), include them inside a `section.media` element. These take an optional `data-fullwidth` property. Inside media elements you can include `<img>` elements. If the element has an `alt` attribute, the value of the attribute will be used as the caption for the media element. These captions can also include links written in markdown syntax.
+```html
+<section class="media" data-fullwidth="true">
+    <img src="image.jpg" alt="picture of a [cool](http://cool.com) cat">
+</section>
+```
+
+### code snippets
+For large code examples (ie. outside of `<p>` or `<div>` elements) include them inside a `code` element within a `pre.code` element. You can optionally word wrap the code by setting the `data-wrap` attribute to "true". If you are optionally using `bb-code-colors.css` and  [`highlight.js`](https://highlightjs.org/) for syntax highlighting (see usage notes above) then you can also specify what language the code snippet is in by specifying it in the `code` element's `class` attribute.
+```html
+<pre class="code">
+    <code class="js" data-wrap="true">
+        var x = 100;
+        var y = 100;
+
+        for(var i=0; i&lt;100; i++){
+
+            z = Math.random() * 100;
+            drawStuff(x,y,z);
+
+        }
+    </code>
+</pre>
 ```
 
 ### tag elements
