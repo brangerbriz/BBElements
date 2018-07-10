@@ -204,9 +204,11 @@ window.addEventListener('load',()=>{
         logo.getAttribute('data-brand-color') : '#e40477'
     let logoWidth = logo.getAttribute('width') ?
         logo.getAttribute('width') : 200
+    let logoHref = logo.getAttribute('href') ?
+        logo.getAttribute('href') : 'https://brangerbriz.com'
 
     let homeLink = document.createElement('a')
-        homeLink.setAttribute('href','https://brangerbriz.com')
+        homeLink.setAttribute('href',logoHref)
     logo.appendChild(homeLink)
     //
     let svgLogo = svg('svg',
