@@ -152,17 +152,3 @@ pre.code {
     font-family: "BB_code";
     overflow-x: auto;
 }
-
-/* for IE 8 + below ~ * ~ * ~ * ~ * ~ * ~ * ~ * ~ * ~ * ~ * ~ * ~ * ~ * ~ * ~ */
-/*  ~ * ~ * ~ * ~ * ~ * ~ * ~ * ~ * ~ * ~ * ~ * ~ * ~ * ~ * ~ * ~ * ~ * ~ * ~ */
-
-.oldIE {
-    font-family: sans-serif;
-    position: absolute;
-    left: 0px; top:0px;
-    z-index: 999999999;
-    width: 100%; height: 100%;
-    background: #e40477;
-}
-.oldIE p { color:#fff; margin:50px auto; width: 100%; max-width: 500px; }
-.oldIE p a { color:#fff;  }
