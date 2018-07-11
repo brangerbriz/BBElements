@@ -26,7 +26,7 @@ Once you've included those you can use BBElements as described below. You can al
 
 
 ### BB Logo
-You can include an SVG of the BB logo with the code below. It has a few optional attributes including `width` which changes the size of the logo, `data-brand-color` which changes the default pink color, `data-text-color` which changes the default black text color and `data-fill-color` which changes the white color of the B inside the circle mark. There is also an optional `href` attribute, which specifies where to link the logo to (default is our website)
+You can include an SVG of the BB logo with the code below. It has a few optional attributes including `width` which changes the size of the logo, `data-brand-color` which changes the default pink color, `data-text-color` which changes the default black text color and `data-fill-color` which changes the white color of the B inside the circle mark. There is also an optional `href` attribute, which specifies where to link the logo to. When no `href` is specified the link defaults is our website, when set to `href="false"` it won't link anywhere.
 ```html
 <section id="logo"></section>
 ```

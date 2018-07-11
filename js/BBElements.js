@@ -207,12 +207,13 @@ window.addEventListener('load',()=>{
     let logoHref = logo.getAttribute('href') ?
         logo.getAttribute('href') : 'https://brangerbriz.com'
 
-    let homeLink = document.createElement('a')
-        homeLink.setAttribute('href',logoHref)
-    logo.appendChild(homeLink)
+    let parentEle = (logoHref=="false") ?
+        document.createElement('span') : document.createElement('a')
+        parentEle.setAttribute('href',logoHref)
+    logo.appendChild(parentEle)
     //
     let svgLogo = svg('svg',
-        {"viewBox":"0 0 198.0 44.0","id":"svgLogo","width":logoWidth,},homeLink)
+        {"viewBox":"0 0 198.0 44.0","id":"svgLogo","width":logoWidth,},parentEle)
 
     // cirlcle B mark
     svg('rect',{
