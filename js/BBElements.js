@@ -12,7 +12,7 @@
     +++++++++++++++++                                \___/
       +++++++++++++
 */
-window.addEventListener('load',()=>{
+function BBElements(){
 
     /* * * * * * * * * * * * * * * * * UTILS * * * * * * * * * * * * * * * *  */
     /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *  */
@@ -76,9 +76,10 @@ window.addEventListener('load',()=>{
         let m = medias[i]
         // create img caption elements
         let img = m.querySelector('img')
-        if(img && img.getAttribute('alt')){
-            let cap = document.createElement('div')
-                cap.className = 'caption'
+        let cap = m.querySelector('div.caption')
+        if(!cap && img && img.getAttribute('alt')){
+            cap = document.createElement('div')
+            cap.className = 'caption'
             if(m.dataset.fullwidth) cap.setAttribute('data-fullwidth','true')
             let txt = img.getAttribute('alt')
             md2html(txt,cap)
@@ -99,8 +100,9 @@ window.addEventListener('load',()=>{
         let q = quotes[i]
         // create quote credit elements
         let val = q.getAttribute('data-credit')
-        if(val){
-            let cred = document.createElement('div')
+        let cred = q.querySelector('div.quote-credit')
+        if(!cred && val){
+            cred = document.createElement('div')
             cred.className = 'quote-credit'
             md2html(val,cred)
             q.appendChild(cred)
@@ -143,6 +145,17 @@ window.addEventListener('load',()=>{
             aBottom = document.createElement('aside')
             aBottom.className = 'note bottom'
             p.appendChild(aBottom)
+        } else if(aTop.firstChild || aBottom.firstChild){
+            // if they already have notes in them, remove them
+            if(aTop.firstChild){
+                while (aTop.firstChild) {
+                    aTop.removeChild(aTop.firstChild)
+                }
+            } else if(aBottom.firstChild){
+                while (aBottom.firstChild) {
+                    aBottom.removeChild(aBottom.firstChild)
+                }
+            }
         }
         // append individual note
         let nfo = notes[i].getAttribute('data-info')
@@ -164,7 +177,7 @@ window.addEventListener('load',()=>{
             for (let i = 0; i < codes.length; i++) {
                 // word wrap any code elemnts that require it
                 if(codes[i].getAttribute('data-wrap')=="true"){
-                    codes[i].style.whiteSpace ="pre-wrap"
+                    codes[i].style.whiteSpace = "pre-wrap"
                 }
                 // color code 'em
                 hljs.highlightBlock(codes[i])
@@ -367,5 +380,6 @@ window.addEventListener('load',()=>{
         'for media-queries that conform to the BB Style Guide')
     }
 
+}
 
-})
+window.addEventListener('load',BBElements())
