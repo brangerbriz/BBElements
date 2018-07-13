@@ -391,8 +391,8 @@ function BBElements(){
 
     function mobileMarkerLogo(){
         let logo = document.querySelector('#logo')
-        let mark = logo.getAttribute('data-mark-only')
         if(logo){
+            let mark = logo.getAttribute('data-mark-only')
             let svg = logo.querySelector('svg')
             let dw = (innerWidth < 767) ? 44 : 198
             let w = (logo.getAttribute('width')) ?
