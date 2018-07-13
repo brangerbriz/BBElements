@@ -209,12 +209,15 @@ function BBElements(){
 
     let logo = document.querySelector('#logo')
     if(logo){ logo.innerHTML = ""
+
     let fillColor = logo.getAttribute('data-fill-color') ?
         logo.getAttribute('data-fill-color') : '#ffffff'
     let textColor = logo.getAttribute('data-text-color') ?
         logo.getAttribute('data-text-color') : '#000000'
     let brandColor = logo.getAttribute('data-brand-color') ?
         logo.getAttribute('data-brand-color') : '#e40477'
+    let markOnly = logo.getAttribute('data-mark-only') ?
+        logo.getAttribute('data-mark-only') : false
     let logoWidth = logo.getAttribute('width') ?
         logo.getAttribute('width') : 200
     let logoHref = logo.getAttribute('href') ?
@@ -224,9 +227,22 @@ function BBElements(){
         document.createElement('span') : document.createElement('a')
         parentEle.setAttribute('href',logoHref)
     logo.appendChild(parentEle)
+
     //
-    let svgLogo = svg('svg',
-        {"viewBox":"0 0 198.0 44.0","id":"svgLogo","width":logoWidth,},parentEle)
+    let svgLogo
+    if(markOnly=="true") {
+        let w = (logo.getAttribute('width')) ?
+            logo.getAttribute('width') : 44
+
+        svgLogo = svg('svg',{
+            "viewBox":"0 0 44.0 44.0","id":"svgLogo","width":w
+        },parentEle)
+
+    } else {
+        svgLogo = svg('svg',{
+            "viewBox":"0 0 198.0 44.0","id":"svgLogo","width":logoWidth
+        },parentEle)
+    }
 
     // cirlcle B mark
     svg('rect',{
@@ -359,22 +375,50 @@ function BBElements(){
             let svg = logo.querySelector('svg')
             let l
             if( innerWidth < 767 ){
-                l = innerWidth/2 - svg.getAttribute('width')/2
+                // l = innerWidth/2 - svg.getAttribute('width')/2
+                l = innerWidth - (innerWidth*0.05) - svg.getAttribute('width')
             } else if( innerWidth < 1023 ){
                 l = innerWidth/2 - 265 // <p>(530)/2
             } else if( innerWidth < 1280 ){
                 l = innerWidth/2 - 235 // <p>(470)/2
             } else {
-                //  window/2   max-width/2   svg-logo( 0.28 to adjust the B )
-                l = innerWidth/2 - 290 - svg.getAttribute('width')*0.28
+                //  window/2   max-width/2   svg-logo( 0.30 to adjust the B )
+                l = innerWidth/2 - 290 - svg.getAttribute('width')*0.30
             }
             logo.style.marginLeft = l+"px"
         }
     }
 
-    if(isUsingCSSFile('bb-responsive')){
+    function mobileMarkerLogo(){
+        let logo = document.querySelector('#logo')
+        let mark = logo.getAttribute('data-mark-only')
+        if(logo){
+            let svg = logo.querySelector('svg')
+            let dw = (innerWidth < 767) ? 44 : 198
+            let w = (logo.getAttribute('width')) ?
+                logo.getAttribute('width') : dw
+
+            if(mark=="mobile" && innerWidth < 767 ){
+                svg.setAttributeNS(null,'viewBox',"0 0 44.0 44.0")
+                svg.setAttributeNS(null,'width',w)
+                logo.style.marginLeft =
+                    innerWidth - (innerWidth*0.05) - w +"px"
+
+            } else if(mark=="mobile" && innerWidth >= 767){
+                svg.setAttributeNS(null,'viewBox',"0 0 198.0 44.0")
+                svg.setAttributeNS(null,'width',w)
+            }
+        }
+    }
+
+    function responsiveLogo(){
         positionLogo()
-        window.addEventListener('resize',positionLogo)
+        mobileMarkerLogo()
+    }
+
+    if(isUsingCSSFile('bb-responsive')){
+        responsiveLogo()
+        window.addEventListener('resize',responsiveLogo)
     } else {
         console.warn('BBElements: consider using bb-responsive.css '+
         'for media-queries that conform to the BB Style Guide')
