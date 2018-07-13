@@ -16,33 +16,6 @@
 html { line-height: 1.15; -webkit-text-size-adjust: 100%; }
 body { margin: 0; }
 
-
-@font-face {
-    font-family: 'BB_title';
-    src: url('fonts/ITCAvantGardePro-Bold.otf');
-}
-@font-face {
-    font-family: 'BB_code';
-    src: url('fonts/inconsolata.woff');
-}
-@font-face {
-    font-family: 'BB_copy';
-    src: url('fonts/Roboto-Light.ttf');
-    font-weight: normal;
-}
-@font-face {
-    font-family: 'BB_copy';
-    src: url('fonts/Roboto-Regular.ttf');
-    font-weight: bold;
-}
-/*@font-face {
-    font-family: 'BB_copy';
-    src: url('fonts/Roboto-Thin.ttf');
-    font-weight: lighter;
-}*/
-
-
-
 /* headers  ~ * ~ * ~ * ~ * ~ * ~ * ~ * ~ * ~ * ~ * ~ * ~ * ~ * ~ * ~ * ~ * ~ */
 h1, h2, h3 { font-family:'BB_title', sans-serif; color:#000; font-weight:100; }
 h1, h2 { letter-spacing: 0.3px; }
@@ -100,12 +73,12 @@ span.quote {
     vertical-align: super;
     font-size: 75%;
 }
-aside.note {
+aside.note  {
     display:block; width:250px; float:right;
     font-family:'BB_copy', sans-serif; font-size:12px; color:#828282;
     line-height:24px; margin-right:-282px;
 }
-aside.note.bottom{
+aside.note.bottom {
     display:none; width:90%; float:none;
     margin-right:0px; margin-top:10px; padding:0px;
 }

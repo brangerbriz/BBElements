@@ -6,19 +6,24 @@ is a collection of libraries for styling HTML pages which conform to the Branger
 
 clone this repo and include the `css` and `js` folders any project you want to use BBElements in (you can optionally include the images folder if you need the BB logo svg files). Then in your `<head>` make sure to include:
 ```html
-<!-- this is the only 100% required CSS file -->
+<!-- required: this is all the base64 @font-faces (avoids FOUT) -->
+<link rel="stylesheet" href="css/bb-fonts.css">
+<!-- required: this is the core styles file -->
 <link rel="stylesheet" href="css/bb-styles.css">
+
 <!-- optionally: if you want media-queries for responsive layout -->
 <link rel="stylesheet" href="css/bb-responsive.css">
 <!-- optionally: if you want code snippets to be syntax highlighted -->
 <link rel="stylesheet" href="css/bb-code-colors.css">
+<!-- optionally: if you want animations on load -->
+<link rel="stylesheet" href="css/bb-animations.css">
 ```
 
 Then in at the bottom of you `<body>` make sure to include:
 ```html
 <!-- optionally: if you want code snippets to be syntax highlighted -->
 <script src="js/highlightJS/highlight.pack.js"></script>
-<!-- this is the only 100% required JS file -->
+<!-- required: handles misc logic (logo, marginal notes, captions, etc) -->
 <script src="js/BBElements.js"></script>
 ```
 
@@ -44,6 +49,15 @@ You can include an SVG of the BB logo with the code below. It has a few optional
 <h1> larger black titles </h1>
 <h2> large black titles </h2>
 <h3> small pink titles </h3>
+```
+
+### tag elements
+```html
+<span class="tags">
+    <a href="#">Generative</a>
+    <a href="#">Installation</a>
+    <a href="#">Digital Literacy</a>
+</span>
 ```
 
 ### divs and paragraphs
@@ -113,13 +127,4 @@ For large code examples (ie. outside of `<p>` or `<div>` elements) include them 
         }
     </code>
 </pre>
-```
-
-### tag elements
-```html
-<span class="tags">
-    <a href="#">Generative</a>
-    <a href="#">Installation</a>
-    <a href="#">Digital Literacy</a>
-</span>
 ```
