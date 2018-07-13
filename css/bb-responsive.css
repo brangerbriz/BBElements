@@ -67,7 +67,7 @@ span.quote { position:relative; left:-15px; }
 /* ~ * ~ * ~ * ~ * ~ * ~ * ~ * ~ * ~ * ~ * ~ * ~ * ~ * ~ */
 @media (max-width: 767px) {
     h1, h2, h3, span.tags, div, p, pre.code > code { max-width:90%;  }
-    h1 { font-size:50px; }
+    h1 { font-size:42px; line-height:48px; margin-top:27px; }
     h2 { font-size:32px; }
     div.quote-credit { max-width:100%; }
     .caption { max-width:90%; left:0px; margin-left:auto; margin-right:auto; }
@@ -77,10 +77,14 @@ span.quote { position:relative; left:-15px; }
         padding:0px 0px 23px 0px;
     }
     p span.quote {
+        font-size:26px; line-height:31px;
         display:block; float:none; margin:0px;
         width:90%; max-width:90%;
     }
-    span.quote { width:90%; max-width:90%; left:4px; }
+    span.quote {
+        font-size:26px; line-height:31px;
+        width:90%; max-width:90%; left:4px;
+    }
     aside.note { display:none; }
     aside.note.bottom { display:block; }
 }
