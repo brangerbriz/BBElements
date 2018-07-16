@@ -71,6 +71,23 @@ function BBElements(){
         then creates caption divs from alt content
         alt values with [markdown](links) will be converted to <a> tags
     */
+
+    // add show class to images after loading (if using animations)
+    if( isUsingCSSFile('bb-animations.css') ){
+        let imgs = document.querySelectorAll('img')
+        for (let i = 0; i < imgs.length; i++) {
+            if( imgs[i].parentNode.className == "media" ){
+                if(imgs[i].complete){
+                    imgs[i].classList.add('show')
+                } else {
+                    imgs[i].addEventListener('load',function(){
+                        this.classList.add('show')
+                    })
+                }
+            }
+        }
+    }
+
     let medias = document.querySelectorAll('section.media')
     for (let i = 0; i < medias.length; i++) {
         let m = medias[i]

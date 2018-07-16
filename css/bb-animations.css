@@ -35,3 +35,8 @@ h1 { animation: h1_in 2s; }
 h3, div.date { animation: h3_in 2s; }
 p, section.media, pre.code { animation: fade_in 2s; }
 span.quote { animation: quote_in 2s; }
+
+
+section.media img { transform:scale(0.9); opacity:0; }
+section.media img.show { transform:scale(1); opacity:1; }
+section.media img { transition:transform 0.5s, opacity 0.5s; }
