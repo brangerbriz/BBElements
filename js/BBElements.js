@@ -415,13 +415,15 @@ function BBElements(){
             let w = (logo.getAttribute('width')) ?
                 logo.getAttribute('width') : dw
 
-            if(mark=="mobile" && innerWidth < 767 ){
+            if((mark=="mobile"||mark=="mobile-right") && innerWidth<767 ){
                 svg.setAttributeNS(null,'viewBox',"0 0 44.0 44.0")
                 svg.setAttributeNS(null,'width',w)
-                logo.style.marginLeft =
-                    innerWidth - (innerWidth*0.05) - w +"px"
+                if(mark=="mobile-right")
+                    logo.style.marginLeft =
+                        innerWidth - (innerWidth*0.05) - w +"px"
+                else logo.style.marginLeft = innerWidth*0.05+"px"
 
-            } else if(mark=="mobile" && innerWidth >= 767){
+            }else if((mark=="mobile"||mark=="mobile-right") && innerWidth>=767){
                 svg.setAttributeNS(null,'viewBox',"0 0 198.0 44.0")
                 svg.setAttributeNS(null,'width',w)
             }

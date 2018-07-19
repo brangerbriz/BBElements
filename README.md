@@ -38,7 +38,7 @@ You can include an SVG of the BB logo with the code below. It has a few optional
 - `data-brand-color` which changes the default pink color.
 - `data-text-color` which changes the default black text color.
 - `data-fill-color` which changes the white color of the B inside the circle mark.
-- `data-mark-only` if set to "true" it only render's the (B) mark, if set to "mobile" it only renders the (B) mark when innerWidth is less than 767px (assuming you are using `bb-responsive-styles.css`)
+- `data-mark-only` if set to "true" it only renders the (B) mark, if set to "mobile" it only renders the (B) mark when innerWidth is less than 767px (assuming you are using `bb-responsive-styles.css`) positioned on the left, or to position the mobile (B) on the right you can also set it to "mobile-right"
 
 ```html
 <section id="logo"></section>
