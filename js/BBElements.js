@@ -233,10 +233,16 @@ function BBElements(){
         logo.getAttribute('data-text-color') : '#000000'
     let brandColor = logo.getAttribute('data-brand-color') ?
         logo.getAttribute('data-brand-color') : '#e40477'
+
     let markOnly = logo.getAttribute('data-mark-only') ?
         logo.getAttribute('data-mark-only') : false
+
+    let subTitle = logo.getAttribute('data-sub-title') ?
+        logo.getAttribute('data-sub-title') : false
+
     let logoWidth = logo.getAttribute('width') ?
         logo.getAttribute('width') : 200
+
     let logoHref = logo.getAttribute('href') ?
         logo.getAttribute('href') : 'https://brangerbriz.com'
 
@@ -245,7 +251,8 @@ function BBElements(){
         parentEle.setAttribute('href',logoHref)
     logo.appendChild(parentEle)
 
-    //
+
+    // create svg element
     let svgLogo
     if(markOnly=="true") {
         let w = (logo.getAttribute('width')) ?
@@ -259,6 +266,20 @@ function BBElements(){
         svgLogo = svg('svg',{
             "viewBox":"0 0 198.0 44.0","id":"svgLogo","width":logoWidth
         },parentEle)
+    }
+
+    // create sub title
+    if(subTitle){
+        let st = document.createElement('span')
+        st.textContent = subTitle
+        st.style.fontFamily = '"BB_title", sans-serif'
+        st.style.fontSize = "24px"
+        st.style.display = "block"
+        st.style.color = '#e40477'
+        st.style.paddingLeft = logoWidth/3.6+"px"
+        st.style.marginTop = "-10px"
+        st.style.letterSpacing = "-1px"
+        parentEle.appendChild(st)
     }
 
     // cirlcle B mark

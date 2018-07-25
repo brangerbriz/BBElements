@@ -16,6 +16,8 @@
 html { line-height: 1.15; -webkit-text-size-adjust: 100%; }
 body { margin: 0; }
 
+#logo a { text-decoration: none; }
+
 /* headers  ~ * ~ * ~ * ~ * ~ * ~ * ~ * ~ * ~ * ~ * ~ * ~ * ~ * ~ * ~ * ~ * ~ */
 h1, h2, h3 { font-family:'BB_title', sans-serif; color:#000; font-weight:100; }
 h1, h2 { letter-spacing: 0.3px; }

@@ -35,6 +35,7 @@ You can include an SVG of the BB logo with the code below. It has a few optional
 
 - `width` which changes the size of the logo.
 - `href` which specifies where to link the logo to. When no `href` is specified the link defaults to our website, when set to `href="false"` it won't link anywhere.
+- `data-sub-title` which adds a sub-title below the logo.
 - `data-brand-color` which changes the default pink color.
 - `data-text-color` which changes the default black text color.
 - `data-fill-color` which changes the white color of the B inside the circle mark.
