@@ -2,6 +2,8 @@
 
 is a collection of libraries for styling HTML pages which conform to the Branger_Briz brand. Unlike the previous iteration of BBElements (see v1 branch), this version does not require any build systems and can be used with no third party dependencies (see `pre.code` for exception) it's 100% human readable vanilla CSS and JavaScript.
 
+We've added support for [BBElements code snippets](https://github.com/brangerbriz/BBElements-code-snippets) in VS Code and Atom. We recommend you install them for consistency and to speed of your development using these HTML/CSS elements.
+
 ## usage
 
 clone this repo and include the `css` and `js` folders any project you want to use BBElements in (you can optionally include the images folder if you need the BB logo svg files). Then in your `<head>` make sure to include:
