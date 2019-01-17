@@ -476,7 +476,7 @@
         mobileMarkerLogo()
     }
 
-    if(isUsingCSSFile('bb-responsive')){
+    if(isUsingCSSFile('bb-responsive.css')){
         responsiveLogo()
         window.addEventListener('resize',responsiveLogo)
     } else {
