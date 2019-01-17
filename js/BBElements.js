@@ -204,7 +204,7 @@
     let hljs = (typeof exports === 'object') ?
         require('highlightjs') : window.hljs
 
-    if(isUsingCSSFile('bb-code-colors')){
+    if(isUsingCSSFile('bb-code-colors.css')){
         if(typeof hljs !== "object"){
             throw new Error('BBElements: using bb-code-colors.css '+
             'requires that you also include highlight.js '+
