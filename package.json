@@ -1,0 +1,14 @@
+{
+  "name": "BBElements",
+  "version": "1.0.0",
+  "description": "client side library for styleing/creating elements to conform to the BB brand style guide. The js is meant to work in conjunction with the files in the css directory",
+  "main": "js/BBElements.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Nick Briz <nbriz@brangerbriz.com>",
+  "license": "GPL-3.0",
+  "dependencies": {
+    "highlightjs": "^9.12.0"
+  }
+}

@@ -1,3 +1,4 @@
+/* BB CHECK FOR: bb-styles.css !!!DO NOT REMOVE THIS COMMENT!!! */
 /*
       +++++++++++++
     +++++++++++++++++
@@ -34,10 +35,10 @@ div, p, ul, ol {
 
 div::-moz-selection, p::-moz-selection,
 p a::-moz-selection, p i::-moz-selection,
-div a::-moz-selection, div i::-moz-selection, 
+div a::-moz-selection, div i::-moz-selection,
 ul a::-moz-selection, ul a::-moz-selection { background:#e40477; color:#fff; }
 div::selection, p::selection, p a::selection, p i::selection,
-div a::selection, div i::selection, 
+div a::selection, div i::selection,
 ul a::selection, ol a::selection { background:#e40477; color:#fff; }
 
 div a, p a, ul a, ol a { color:#e40477; text-decoration:none; padding-bottom:2px; }

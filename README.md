@@ -31,6 +31,17 @@ Then in at the bottom of you `<body>` make sure to include:
 
 Once you've included those you can use BBElements as described below. You can also take a look at [the example file](example.html) for reference.
 
+#### usage with module bundler
+
+As mentioned before, BBElements no longer requires a build system. That said, we have begun adopting [Vue.js](https://vuejs.org/) on various projects (including our homepage) and while Vue does not require a build system, if you want to write an app/site using Vue's Single File Components (SFC) a build system is required. For this reason, BBElements can optionally be imported as a JS module and bundled into a **client side** Vue app.
+
+First, install/download BBElements from github:
+```sh
+npm install git+https://github.com/brangerbriz/BBElements.git
+```
+(you might want to consider including the `--save` or `--save-dev` flags of course)
+
+
 
 ### BB Logo
 You can include an SVG of the BB logo with the code below. It has a few optional attributes which are as follows:

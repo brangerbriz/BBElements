@@ -12,16 +12,26 @@
     +++++++++++++++++                                \___/
       +++++++++++++
 */
-function BBElements(){
+(function(window){ function BBElements(){
 
     /* * * * * * * * * * * * * * * * * UTILS * * * * * * * * * * * * * * * *  */
     /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *  */
 
     function isUsingCSSFile(filename){
         let isUsing = false
-        let cssFiles = document.querySelectorAll('link')
-        for (let i = 0; i < cssFiles.length; i++) {
-            if(cssFiles[i].getAttribute('href').indexOf(filename) >= 0){
+        // check if included as <link rel="stylesheet" href="filename"/>
+        let cssLinkTags = document.querySelectorAll('link')
+        for (let i = 0; i < cssLinkTags.length; i++) {
+            if(cssLinkTags[i].getAttribute('href').indexOf(filename) >= 0){
+                isUsing = true
+                break
+            }
+        }
+        // check if included as <style> (ex via webpack css-loader)
+        let check = `BB CHECK FOR: ${filename} !!!DO NOT REMOVE THIS COMMENT!!!`
+        let cssStyleTags = document.querySelectorAll('style')
+        for (let i = 0; i < cssStyleTags.length; i++) {
+            if( cssStyleTags[i].innerHTML.includes(check) ){
                 isUsing = true
                 break
             }
@@ -191,6 +201,9 @@ function BBElements(){
         syntax highlight with highlightJS
         IF we're using the bb-code-colors.css
     */
+    let hljs = (typeof exports === 'object') ?
+        require('highlightjs') : window.hljs
+
     if(isUsingCSSFile('bb-code-colors')){
         if(typeof hljs !== "object"){
             throw new Error('BBElements: using bb-code-colors.css '+
@@ -473,4 +486,18 @@ function BBElements(){
 
 }
 
-window.addEventListener('load',BBElements())
+if (typeof module === "object" && module && typeof module.exports === "object") {
+
+    module.exports = BBElements
+
+} else {
+
+    window.BBElements = BBElements
+
+}
+
+})(this)
+
+if( typeof window === 'object' && window === this ){
+    window.addEventListener('load',BBElements())
+}
