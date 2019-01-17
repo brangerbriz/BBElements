@@ -12,7 +12,7 @@
     +++++++++++++++++                                \___/
       +++++++++++++
 */
-(function(window){ function BBElements(){
+function BBElements(){
 
     /* * * * * * * * * * * * * * * * * UTILS * * * * * * * * * * * * * * * *  */
     /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *  */
@@ -478,6 +478,9 @@
 
     if(isUsingCSSFile('bb-responsive.css')){
         responsiveLogo()
+        // let hljs = (typeof exports === 'object') ?
+            // require('highlightjs') : window.hljs
+
         window.addEventListener('resize',responsiveLogo)
     } else {
         console.warn('BBElements: consider using bb-responsive.css '+
@@ -486,18 +489,13 @@
 
 }
 
-if (typeof module === "object" && module && typeof module.exports === "object") {
+if(typeof module === "object" && module && typeof module.exports === "object"){
 
     module.exports = BBElements
 
 } else {
 
     window.BBElements = BBElements
-
-}
-
-})(this)
-
-if( typeof window === 'object' && window === this ){
     window.addEventListener('load',BBElements())
+
 }
