@@ -41,6 +41,37 @@ npm install git+https://github.com/brangerbriz/BBElements.git
 ```
 (you might want to consider including the `--save` or `--save-dev` flags of course)
 
+Then, in your `App.vue` you can do something like this:
+```html
+<template>
+    <section>
+        <section id="logo" data-mark-only="mobile-right"></section>
+        <h1>Sample Title</h1>
+        <p>This is an example of a paragraph with BB styles</p>
+    </section>
+</template>
+
+<script>
+    // import BBElements.js
+    import BBElements from 'BBElements'
+
+    export default {
+        name:'App',
+        mounted(){
+            // call BBElements when ready
+            BBElements()
+        }
+    }
+</script>
+
+<!-- import BBElements stylesheets -->
+<style src="BBElements/css/bb-fonts.css"></style>
+<style src="BBElements/css/bb-styles.css"></style>
+<style src="BBElements/css/bb-responsive.css"></style>
+<style src="BBElements/css/bb-code-colors.css"></style>
+<style src="BBElements/css/bb-animations.css"></style>
+```
+
 
 
 ### BB Logo
