@@ -106,19 +106,19 @@ You can include an SVG of the BB logo with the code below. It has a few optional
 ```
 
 ### divs and paragraphs
-Both `p` and `div` tags conform to the basic copy style of the BB brand.
+Both `p` and `div.bbe` tags conform to the basic copy style of the BB brand.
 ```html
 <p> this will be styled like default BB copy </p>
-<div> this will be styled like default BB copy </div>
+<div class="bbe"> this will be styled like default BB copy </div>
 ```
-there is an optional `date` class specifically used under `h3` elements (ex: underneath the attribution of a blog post)
+there is an alternative `date` class specifically used under `h3` elements (ex: underneath the attribution of a blog post)
 ```html
 <div class="date">January 1, 2045</div>
 ```
-Any `code`,`a`,`span.quote`,`img` elements inside of `p` and `div` elements will be formatted properly.
+Any `code`,`a`,`span.quote`,`img` elements inside of `p` and `div.bbe` elements will be formatted properly.
 ```html
 <p>
-    <a href="page">Links</a> inside of p or div elements will be styled
+    <a href="page">Links</a> inside of p or div.bbe elements will be styled
     accordingly. You can also include <img src="images"> as well as
     <code>code</code> and <span class="quote">pull quotes like this</span>,
     and they will be formatted properly as per our style guide.
@@ -141,7 +141,7 @@ To include marginal notes simply add a `span.marginal-note` element inside of a 
 
 
 ### block quotes
-For large pull quotes (ie. outside of `<p>` or `<div>` elements) include them inside a `span.quote` element. They take an optional `data-credit` attribute which will appear in lighter font below the quote. These can include links written in markdown syntax.
+For large pull quotes (ie. outside of `<p>` or `<div class="bbe">` elements) include them inside a `span.quote` element. They take an optional `data-credit` attribute which will appear in lighter font below the quote. These can include links written in markdown syntax.
 ```html
 <span class="quote" data-credit="Dr. Ipsum [publication](https://website.org)">
     This is something someone said
@@ -149,7 +149,7 @@ For large pull quotes (ie. outside of `<p>` or `<div>` elements) include them in
 ```
 
 ### media elements
-To format large media elements properly (ie. outside of `<p>` or `<div>` elements), include them inside a `section.media` element. These take an optional `data-fullwidth` property. Inside media elements you can include `<img>` elements. If the element has an `alt` attribute, the value of the attribute will be used as the caption for the media element. These captions can also include links written in markdown syntax.
+To format large media elements properly (ie. outside of `<p>` or `<div class="bbe">` elements), include them inside a `section.media` element. These take an optional `data-fullwidth` property. Inside media elements you can include `<img>` elements. If the element has an `alt` attribute, the value of the attribute will be used as the caption for the media element. These captions can also include links written in markdown syntax.
 ```html
 <section class="media" data-fullwidth="true">
     <img src="image.jpg" alt="picture of a [cool](http://cool.com) cat">
@@ -157,7 +157,7 @@ To format large media elements properly (ie. outside of `<p>` or `<div>` element
 ```
 
 ### code snippets
-For large code examples (ie. outside of `<p>` or `<div>` elements) include them inside a `code` element within a `pre.code` element. You can optionally word wrap the code by setting the `data-wrap` attribute to "true". If you are optionally using `bb-code-colors.css` and  [`highlight.js`](https://highlightjs.org/) for syntax highlighting (see usage notes above) then you can also specify what language the code snippet is in by specifying it in the `code` element's `class` attribute.
+For large code examples (ie. outside of `<p>` or `<div class="bbe">` elements) include them inside a `code` element within a `pre.code` element. You can optionally word wrap the code by setting the `data-wrap` attribute to "true". If you are optionally using `bb-code-colors.css` and  [`highlight.js`](https://highlightjs.org/) for syntax highlighting (see usage notes above) then you can also specify what language the code snippet is in by specifying it in the `code` element's `class` attribute.
 ```html
 <pre class="code">
     <code class="js" data-wrap="true">
