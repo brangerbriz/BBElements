@@ -72,7 +72,7 @@ Then, in your `App.vue` you can do something like this:
 <style src="BBElements/css/bb-animations.css"></style>
 ```
 
-
+## Elements and Classes
 
 ### BB Logo
 You can include an SVG of the BB logo with the code below. It has a few optional attributes which are as follows:
