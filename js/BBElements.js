@@ -85,12 +85,16 @@ function BBElements(){
     // add show class to images after loading (if using animations)
     if( isUsingCSSFile('bb-animations.css') ){
         let imgs = document.querySelectorAll('img')
+        console.log(imgs);
         for (let i = 0; i < imgs.length; i++) {
             if( imgs[i].parentNode.className == "media" ){
                 if(imgs[i].complete){
+                  console.log('compete',imgs[i]);
                     imgs[i].classList.add('show')
                 } else {
+                  console.log('not ready',imgs[i]);
                     imgs[i].addEventListener('load',function(){
+                      console.log('fired',this);
                         this.classList.add('show')
                     })
                 }
