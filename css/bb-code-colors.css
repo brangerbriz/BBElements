@@ -1,4 +1,3 @@
-/* BB CHECK FOR: bb-code-colors.css !!!DO NOT REMOVE THIS COMMENT!!! */
 /*
       +++++++++++++
     +++++++++++++++++
@@ -17,6 +16,11 @@
 /*
 Original highlight.js style (c) Ivan Sagalaev <maniac@softwaremaniacs.org>
 */
+
+.check-class-bb-code-colors.css {
+  display: none;
+  /* DO NOT REMOVE THIS CLASS -- used by isUsingCSSFile() in BBElements.js */
+}
 
 .hljs {
     display: block;

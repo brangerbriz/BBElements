@@ -1,4 +1,8 @@
-/* BB CHECK FOR: bb-animations.css !!!DO NOT REMOVE THIS COMMENT!!! */
+.check-class-bb-animations.css {
+  display: none;
+  /* DO NOT REMOVE THIS CLASS -- used by isUsingCSSFile() in BBElements.js */
+}
+
 @keyframes logo_in {
     0% { opacity:0; transform:translateX(-30px); }
     50% { transform:translateX(0px); }
