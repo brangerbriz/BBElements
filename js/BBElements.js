@@ -27,8 +27,7 @@ function BBElements () {
       }
     }
     // check if included as <style> (ex via webpack css-loader)
-    // let check = `BB CHECK FOR: ${filename} !!!DO NOT REMOVE THIS COMMENT!!!`
-    let check = `.check-class-${filename} `
+    let check = `.check-class-${filename}`
     let cssStyleTags = document.querySelectorAll('style')
     for (let i = 0; i < cssStyleTags.length; i++) {
       if (cssStyleTags[i].innerHTML.includes(check)) {
