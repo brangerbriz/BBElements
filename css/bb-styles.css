@@ -22,7 +22,7 @@ body { margin: 0; }
 /* headers  ~ * ~ * ~ * ~ * ~ * ~ * ~ * ~ * ~ * ~ * ~ * ~ * ~ * ~ * ~ * ~ * ~ */
 h1, h2, h3 { font-family:'BB_title', sans-serif; color:#000; font-weight:100; }
 h1, h2 { letter-spacing: 0.3px; }
-h2, h3 { margin: 47px 0px; }
+h2, h3 { margin: 37px 0px 0px 0px; }
 h1 { font-size: 60px; line-height: 60px; margin: 100px 0px 47px 0px; }
 h2 { font-size: 36px; line-height: 41px; }
 h3 { font-size: 20px; color:#e40477; text-transform: uppercase; }
